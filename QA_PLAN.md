@@ -1,114 +1,75 @@
-# Outsideish QA Plan
+# Outsideish Quality Assurance Plan
 
-## Purpose
-Protect the mobile-first discovery experience as the visual system, map and feed evolve. This plan is for the current static PWA prototype and should expand alongside real content services.
+## Release rule
+A screenshot at one width is not a pass. Every primary screen must pass visual, interaction, responsive, accessibility and technical checks. Reported crowding, broken interactions and missing icons are release blockers.
 
 ## Viewports
-- Small phone: 360 × 800
-- Typical phone: 390 × 844
-- Large phone: 430 × 932
-- Tablet portrait: 768 × 1024
-- Laptop: 1280 × 800
-- Desktop: 1440 × 900
+360×800, 390×844, 430×932, 759px wide, 760px wide, 1024×768, 1280×800 and 1440×900.
 
-## Core journeys
+## Visual system
+- [ ] Shared palette and typography tokens are used consistently.
+- [ ] Spacing and hierarchy make each screen easy to scan.
+- [ ] No overlapping, clipped or crushed content.
+- [ ] Content groups have breathing room; not every section is the same card.
+- [ ] No raised/neumorphic buttons, offset shadows or heavy outlines.
+- [ ] No emoji, arbitrary Unicode substitutes or mixed icon packs.
+- [ ] Custom SVG icons load and have consistent sizing, weight and alignment.
+- [ ] Empty, selected, disabled, loading, error and success states are designed.
 
-### First visit and feed
-- Arrival screen renders without layout shift or clipped art.
-- Search, mood, time and spend controls are visible and usable.
-- Primary planning action opens the planner.
-- Discovery cards have a clear title, context and action.
-- “Keep wandering” appends another batch rather than clearing the feed.
-- Approaching the feed end can append more items without jumping scroll position.
-- When the starter set cycles, the UI does not claim new data was fetched.
-- No consecutive identical cards are added at a cycle boundary where practical.
+## For you and search
+- [ ] Purpose and first action are obvious.
+- [ ] Search works for supported place/category/neighbourhood terms.
+- [ ] Feed has editorial variety and no immediate duplicate items where avoidable.
+- [ ] Continue discovery preserves scroll and does not claim new data was fetched when cycling local content.
+- [ ] No-result state offers a useful next action.
 
-### Search
-- Exact place-name search opens the matching detail.
-- Search supports relevant category and neighbourhood terms.
-- No-match search gives a useful fallback and does not break navigation.
-- Empty search gives an actionable prompt.
+## Map
+- [ ] Opens unobstructed, with essential controls only.
+- [ ] No persistent tray, title banner or place sheet on initial load.
+- [ ] Distinct illustrated scenes; no repeated crop pretending to be a full city.
+- [ ] Pan works on touch and pointer; dragging does not activate a pin.
+- [ ] Zoom/recenter work and controls stay fixed.
+- [ ] Markers map to actual content records; decorative scenery is not interactive.
+- [ ] Pin tap opens the correct sheet without leaving Explore.
+- [ ] Selecting another pin updates the same sheet.
+- [ ] Closing sheet preserves pan, zoom and filters.
+- [ ] Search and filters work.
+- [ ] Bottom navigation remains visible and functional.
+- [ ] A non-map list alternative exists.
+- [ ] No implied live GPS, routing, distance or exact cartography.
 
-### Map
-- Map opens as the primary, unobstructed city surface.
-- Search, filters and essential controls are visible; no persistent tray, title badge or sticker annotations.
-- Pan/drag works with mouse and touch.
-- A drag does not activate a marker.
-- Zoom and recenter work and keep map features aligned.
-- Pins remain still when idle and have clear selected states.
-- Pin tap opens the place bottom sheet without changing the active screen.
-- The sheet is hidden on initial map load.
-- Selecting another pin updates the open sheet.
-- Closing the sheet preserves pan, zoom and filters.
-- Search from map opens a matching place in the sheet.
-- Filter updates markers and does not leave the filter panel open.
-- No emoji placeholder art or primitive-shape map scenes.
-- Map art does not claim exact cartography, GPS or live navigation.
+## Place, plan, saved and journal
+- [ ] Details do not fabricate missing facts.
+- [ ] Prices/duration are labelled estimates when appropriate; hours include freshness caveats.
+- [ ] Save and visit update state and persist on the same device.
+- [ ] Share works or has a graceful fallback.
+- [ ] Planner results reflect supported preferences and ordered stops.
+- [ ] Swap/shorten/remix change the plan and preserve unrelated constraints.
+- [ ] Empty states offer a clear action.
+- [ ] UI does not claim cross-device sync.
 
-### Place details
-- Name, category, neighbourhood, description and practical details render.
-- Opening hours and prices have appropriate caveats.
-- External source links open safely in a new tab.
-- Save toggles the saved state.
-- Visit action updates the journal and counts.
-- Share uses a supported share mechanism or a graceful fallback.
+## Responsive and accessibility
+- [ ] No horizontal overflow at any target width.
+- [ ] At 759px mobile remains coherent; at 760px+ desktop hand-off appears.
+- [ ] Safe areas and bottom navigation do not cover content.
+- [ ] Controls have visible focus and accessible names.
+- [ ] Touch targets are comfortable, ideally 44×44px.
+- [ ] Contrast passes and state is not communicated by colour alone.
+- [ ] Reduced-motion preference is respected.
+- [ ] Place sheet focus/announcement behaviour is accessible.
 
-### Planner and outings
-- Inputs can be changed and submitted.
-- Result plans reflect the selected preferences as far as the dataset permits.
-- A plan opens a detailed view.
-- Plan stops open their related place details when available.
-- Remix provides another ordering without implying live availability.
+## Technical
+- [ ] node --check app.js passes.
+- [ ] manifest.webmanifest parses as JSON.
+- [ ] Referenced assets load; no console/page errors.
+- [ ] Service worker and cache version are correct.
+- [ ] Clean and repeat loads are tested.
+- [ ] README links and referenced filenames are valid.
+- [ ] Current limitations are stated accurately.
+- [ ] Deployment commit and target are verified before sharing a release URL.
 
-### Saved items and journal
-- Saved places/plans persist across reloads on the same device.
-- Empty states provide a clear next action.
-- Visit entries show a date and can be opened.
-- No account is required for local saves.
+## Known prototype boundaries
+Starter data is not a complete or live Lagos directory. The map is illustrative. Live routing, traffic, open-now and events are not connected. Saves and visits are device-local.
 
-### PWA and resilience
-- Manifest is valid JSON.
-- Service worker registers without unhandled errors.
-- Cached app shell loads on repeat visit.
-- Offline state does not imply that place information is current.
-- Cache version changes when shell assets change.
-
-## Visual and accessibility checks
-- No horizontal overflow at target widths.
-- No critical content is hidden behind bottom navigation or device safe areas.
-- Text remains readable and controls meet comfortable touch target sizes.
-- Keyboard focus is visible.
-- Interactive elements use semantic controls and have accessible names.
-- Reduced-motion preference disables non-essential animation.
-- Colour is not the only indicator of selection.
-- Map discovery has a non-map list alternative.
-
-## Technical checks
-- Run node --check app.js.
-- Parse manifest.webmanifest as JSON.
-- Load the app in a browser at small mobile, typical mobile and desktop widths.
-- Capture page errors and failed requests.
-- Exercise the map, search, planner, detail, save and visit flows.
-- Confirm all docs linked from README exist.
-- Verify the Vercel deployment is ready before sharing the preview.
-
-## Current prototype limitations
-- The place and outing catalogue is small and locally bundled.
-- Feed cycling provides continuous interaction but does not create new venue data.
-- The map is an illustration-coordinate canvas, not a live geographic map.
-- There is no live routing, traffic, open-now status or event feed.
-- Saves and visit history are device-local and do not sync across devices.
-- Place facts must be checked against the linked source before a visit.
-
-## Release gate
-A release is acceptable when the core journeys pass, there are no uncaught browser errors, no horizontal overflow at target widths, the map can be panned and zoomed, the feed does not dead-end, and remaining data limitations are visible and documented.
-
-## Full-reset release checks
-
-- At 360, 390, 430 and 759 CSS px, the mobile app is visible with no horizontal overflow.
-- At 760px and wider, the app shell is hidden and the phone hand-off page is visible.
-- Five-item bottom navigation remains visible on Home, Plan, Saved, Journal and Explore. Every item can leave the map.
-- Map opens with no sheet, discovery tray or decorative title. Search, filters and zoom remain available.
-- A pin opens the correct sheet without leaving Explore; closing it restores the map. Pan/zoom affect the extended illustration.
-- Controls are flat with no elevated-button shadows; no emoji are used as UI or illustration assets.
-- Planner, save/unsave, visit logging, sharing, filters, search, local storage, PWA caching and reduced motion continue to work.
+## Sign-off
+Any broken primary navigation, wrong place selection, lost map state, missing icon, overlapping layout, horizontal overflow, uncaught browser error or unsupported live-data claim blocks release. Record lesser defects with screen, viewport, reproduction steps and severity.
