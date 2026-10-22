@@ -204,3 +204,91 @@ body.map-open{overflow:hidden}body.map-open .bottom-nav{top:0}.explore-screen{he
 @media(prefers-reduced-motion:reduce){.map-pin,.map-area use[href="#human"],.map-area use[href="#tree"]{animation:none!important}}
 
 .home-screen .kicker,.planner-screen .kicker,.results-title .kicker,.saved-title .kicker,.journal-cover .kicker,.profile-cover .kicker,.subhead .kicker{display:none!important}.arrival-copy .intro-line{margin-bottom:0}.arrival-copy{max-width:390px}
+
+/* Outsideish editorial art direction v2 */
+:root{--ink:#242238;--plum:#49305e;--coral:#f06b59;--pink:#f2b4a7;--lilac:#b8a0df;--yellow:#f5c84c;--olive:#52785b;--cream:#f8f1e7;--paper:#fff7e9;--sand:#e7d2ac;--muted:#665e6a;--line:#c9bca9;--mint:#75bfc1}
+body,html{background:var(--cream);color:var(--ink)}
+.topbar{background:var(--cream);border-bottom:1px solid #24223826}
+.wordmark>span:first-child{background:var(--coral);border-radius:5px;transform:rotate(-8deg)}
+.arrival-scene{background:#f2b4a7;border-radius:0 0 4px 4px;border-bottom:3px solid var(--ink)}
+.arrival-scene:before{border-radius:48% 52% 43% 57%;border:2px dashed #24223830}
+h1,h2,h3{letter-spacing:-.045em}
+h1 em,.planner-title h1 em,.results-title h1 em,.saved-title h1 em,.journal-cover h1 em,.profile-cover h1 em{color:var(--plum)}
+.primary{background:var(--coral);color:var(--ink);border-radius:7px;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.primary:hover{background:#f7a08e;transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.primary:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.search-field{border-radius:7px;border-width:2px;background:var(--paper)}
+.search-field button{border-radius:4px;background:var(--yellow)}
+.mood{border-radius:5px;background:var(--paper);border-color:#24223845}
+.mood.selected{background:var(--yellow);border-color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.time-budget button{border-radius:6px;background:var(--paper);border:1px solid #24223845}
+.discovery-card,.map-discovery,.saved-item,.profile-row{border-radius:5px!important}
+.discovery-card{border:1px solid var(--ink);background:var(--paper);overflow:hidden}
+.discovery-card .discovery-art{border-radius:0!important}
+.discovery-copy{padding:12px}
+.discovery-copy h3{font-family:Fraunces,Georgia,serif;font-size:16px;letter-spacing:-.03em}
+.section-row{align-items:end}
+.section-row h2{font-family:Fraunces,Georgia,serif;font-size:23px}
+.adventure-card{border-radius:5px;box-shadow:3px 3px 0 #24223820}
+.adventure-card-top{border-bottom:1px solid var(--ink)}
+.adventure-card-body{padding:15px}
+.adventure-meta span{border-radius:4px}
+.detail-hero{border-radius:5px;border-width:2px}
+.detail-fact{border-radius:4px;background:transparent;border:0;border-top:2px solid var(--ink);padding:12px 0}
+.saved-tabs button,.pills span,.mood-cards label{border-radius:5px}
+.map-area{background:#d5e8df;touch-action:none;cursor:grab}
+.map-area.dragging{cursor:grabbing}
+.full-map{transition:none;will-change:transform}
+.map-pin{animation:none;cursor:pointer;transform-box:fill-box;transform-origin:center;transition:filter .15s}
+.map-pin:hover,.map-pin.selected{filter:drop-shadow(0 0 5px #24223899) saturate(1.2)}
+.map-annotation{border-radius:3px;border-width:2px;box-shadow:2px 2px 0 #242238}
+.map-loc{border-radius:4px}
+.map-bottom{background:#fff7e9;border-radius:4px 4px 0 0;border-width:2px 0 0;box-shadow:0 -5px 0 #24223815}
+.map-discovery{background:#fff7e9;border:0;border-bottom:1px solid #c9bca9;padding:8px 3px}
+.map-discovery.selected{background:#f5c84c}
+.map-thumb{border-radius:4px!important;border-width:1.5px}
+.map-zoom{position:absolute;z-index:4;right:13px;top:125px;display:grid;gap:5px}
+.map-zoom button{width:42px;height:42px;border:2px solid var(--ink);background:var(--paper);font-size:24px;font-weight:700;box-shadow:2px 2px 0 var(--ink);border-radius:4px}
+.map-zoom button:disabled{opacity:.4;box-shadow:none}
+#map-recenter{font-size:19px;background:var(--yellow)}
+.map-top{max-width:620px}
+.map-back,.map-filter{border-radius:4px;border:2px solid var(--ink);box-shadow:2px 2px 0 #242238}
+.map-search{border-radius:4px;border-width:2px}
+.map-search button{border-radius:2px}
+.planner-screen legend{font-family:Fraunces,Georgia,serif;font-size:18px}
+.pills span{border-color:#24223855}
+.pills input:checked+span{background:var(--yellow);border:2px solid var(--ink);padding:9px 12px}
+.modal-sheet{border-radius:5px 5px 0 0}
+.modal-option{border-radius:4px}
+.empty-state{border-radius:5px;background:#f5e6d1}
+.map-bottom-title h2{font-family:Fraunces,Georgia,serif;font-size:21px}
+.map-bottom-title p{font-family:"DM Sans",sans-serif;font-size:10px;letter-spacing:0}
+@media(min-width:720px){
+ .home-screen.active{grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:18px 30px;max-width:1440px;padding:28px clamp(28px,4vw,70px) 50px}
+ .arrival-scene{border-radius:4px;min-height:min(620px,calc(100dvh - 112px));border:2px solid var(--ink)}
+ .arrival-copy h1{font-size:clamp(44px,4vw,66px);line-height:.98}
+ .home-screen .section-row h2{font-size:25px}
+ .discovery-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .discovery-card .discovery-art{height:116px}
+ .map-bottom{right:18px;left:auto;bottom:18px;width:min(390px,34vw);max-height:65dvh;border:2px solid var(--ink);border-radius:4px;padding:12px 16px}
+ .map-zoom{right:20px;top:160px}
+ .map-top{top:18px;left:18px;right:auto;width:min(600px,60vw)}
+ .map-loc{top:82px;left:20px;right:auto}
+ .map-annotation{font-size:13px}
+}
+@media(max-width:719px){
+ .home-screen{padding-bottom:30px}
+ .arrival-scene{min-height:325px}
+ .arrival-copy{width:68%}
+ .arrival-copy h1{font-size:clamp(39px,10vw,50px)}
+ .arrival-art{width:72%;right:-24px}
+ .discovery-list{padding:0 16px;display:grid;grid-template-columns:1fr;gap:0}
+ .discovery-card{display:grid;grid-template-columns:112px minmax(0,1fr);min-height:116px;margin-bottom:10px}
+ .discovery-card .discovery-art{height:100%;min-height:116px}
+ .discovery-copy{align-self:center}
+ .section-row{padding:20px 16px 12px}
+ .map-zoom{right:10px;top:115px}
+ .map-bottom{max-height:39dvh}
+ .map-bottom.collapsed{max-height:67px}
+}
+@media(prefers-reduced-motion:reduce){.map-pin{animation:none!important}.screen,.modal-sheet,.primary,.map-bottom{animation:none!important;transition:none!important}}
