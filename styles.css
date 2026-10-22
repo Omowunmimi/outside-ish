@@ -292,3 +292,9 @@ h1 em,.planner-title h1 em,.results-title h1 em,.saved-title h1 em,.journal-cove
  .map-bottom.collapsed{max-height:67px}
 }
 @media(prefers-reduced-motion:reduce){.map-pin{animation:none!important}.screen,.modal-sheet,.primary,.map-bottom{animation:none!important;transition:none!important}}
+
+.keep-wandering{display:flex;align-items:center;justify-content:center;gap:12px;margin:16px auto 10px;padding:13px 18px;background:var(--yellow);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);border-radius:4px;font-size:12px;font-weight:800;cursor:pointer}
+.keep-wandering span{font-size:18px}
+.plan-discovery .discovery-art{background:var(--mint)!important}
+.plan-discovery:nth-child(3n) .discovery-art{background:var(--yellow)!important}
+@media(min-width:720px){.keep-wandering{grid-column:2;width:100%;margin:0}.home-screen.active{align-content:start}.discovery-card{min-height:190px}.discovery-copy p{font-size:11px;line-height:1.45}}
