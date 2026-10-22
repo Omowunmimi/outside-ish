@@ -1,57 +1,39 @@
 # Outsideish
 
-An illustrated city-discovery companion for people who want to find a reason to go outside, make a small plan, and keep discovering Lagos.
+Outsideish is an illustrated city-discovery companion for people who want to find a reason to go outside, make a small plan and keep discovering Lagos.
 
-## Product direction
+## Current direction
+Outsideish should feel like a thoughtful illustrated city field guide, not a generic directory or a stack of repeated cards. Its visual identity comes from a connected, locally grounded city illustration; its usability comes from clear hierarchy, generous spacing, consistent components and one custom icon family.
 
-Outsideish should feel like wandering through an illustrated city field guide, not browsing a directory of generic cards. The map is a primary discovery surface; the feed should keep opening paths to more places, stories and outings. Mobile is the primary experience, with desktop treated as a deliberate, usable layout rather than a stretched phone screen.
+The current UI has reported layout and interaction problems. The documents below define the reset target; they do not claim that the current implementation already passes.
 
-## Current prototype
+## Product boundaries
+- Mobile-first PWA with an intentional phone-first experience.
+- Primary destinations: For you, Explore, Plan, Saved and Journal.
+- Explore uses an authored illustrated map with pan/zoom and contextual place sheets.
+- Map geometry is illustrative, not exact cartography.
+- Starter content is not a complete or live Lagos directory.
+- Live traffic, turn-by-turn directions, open-now status and live event feeds are not connected.
+- Saves and visit history are device-local unless a future backend is implemented.
 
-- Mobile-first PWA shell.
-- Illustrated Lagos street scene and map.
-- An illustrated Lagos map with pan, zoom, recenter and contextual place bottom sheets.
-- Search, category filters, place sheets and source links.
-- Mixed discovery feed with a “Keep wandering” continuation action.
-- Curated starter outings, a lightweight planner, saved places/plans and a visit journal.
-- Device-local saves; no account required.
-- The map is an authored illustration, not exact cartography. Place information, opening details, prices and events should be checked before visiting. Live traffic, turn-by-turn routing and live event data are not connected.
-
-The current place set is a starting collection, not a complete or live Lagos directory. New content should follow the source and freshness rules in [CONTENT_GUIDE.md](CONTENT_GUIDE.md).
-
-The map opens unobstructed with search and filters. Selecting a place opens a bottom sheet without leaving the map. No emoji placeholder art or autoplay sound is used. The starter dataset is not a live or exhaustive Lagos directory.
-
-## Product and design documentation
-
-- [PRD.md](PRD.md): complete product requirements, audience, goals, journeys, functionality, data quality, accessibility, privacy, metrics and roadmap.
-- [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md): visual identity, colour, typography, illustration, component and responsive design rules.
-- [MOTION.md](MOTION.md): motion tokens, map gestures, transitions, feedback, reduced-motion and QA requirements.
-- [ARCHITECTURE.md](ARCHITECTURE.md): current technical structure, state boundaries, map model, PWA and future modules.
-- [CONTENT_GUIDE.md](CONTENT_GUIDE.md): editorial voice, source/freshness labels and place data quality checklist.
-- [QA_PLAN.md](QA_PLAN.md): responsive, interaction, accessibility and release checks.
+## Source-of-truth documentation
+- [PRD.md](PRD.md): product requirements, information architecture, journeys and screen contracts.
+- [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md): palette, typography, spacing, components and responsive rules.
+- [ICON_SYSTEM.md](ICON_SYSTEM.md): approved icons, sizing, accessibility and asset rules.
+- [MOTION.md](MOTION.md): map gestures, transitions, feedback and reduced motion.
+- [ARCHITECTURE.md](ARCHITECTURE.md): runtime, state, content, PWA and deployment.
+- [CONTENT_GUIDE.md](CONTENT_GUIDE.md): editorial voice and data trust.
+- [QA_PLAN.md](QA_PLAN.md): release-blocking visual, interaction, accessibility and technical checks.
 
 ## Project structure
-
-- `index.html` — screens, SVG illustrations, map and navigation.
-- `styles.css` — visual system, responsive layouts and interaction states.
-- `app.js` — local content, UI state, discovery feed, planner, search and map interaction.
-- `manifest.webmanifest` — PWA metadata.
-- `sw.js` — service worker and shell cache.
-- `assets/` — app icon and static assets.
+Check the repository before editing. Expected files include index.html, redesign.css, app.js, manifest.webmanifest, sw.js and assets/. styles.css may remain as legacy; audit before reusing it.
 
 ## Run locally
+Serve the repository root with a static server, for example:
 
-This is a static web app. Serve the repository root with any local static server, then open it in a browser. For example:
+    python3 -m http.server 4173
 
-```bash
-python3 -m http.server 4173
-```
+Then open http://localhost:4173.
 
-Open `http://localhost:4173`.
-
-## Important product boundaries
-
-- “Keep wandering” currently continues through the curated starter dataset and reshuffles it after one round. A genuinely expanding discovery library requires a larger reviewed content collection and, later, a maintainable content source.
-- Map geometry is illustrative and should not be used to infer actual distances or walking routes.
-- Opening information and spend are not guaranteed current. Check venue sources before departure.
-- Saved items and visit history are stored in the browser on this device and do not sync across devices.
+## Implementation rule
+Do not continue polishing the existing UI until the design system, icon set, component states and screen-by-screen acceptance criteria are implemented and tested. A merged commit is not proof of production deployment. Verify the exact deployed commit and environment before sharing a release URL.
