@@ -582,3 +582,14 @@ Do not collect precise location, names or sensitive personal details by default.
 - Search and filters remain available above the map. No discovery tray or place panel is shown by default.
 - Selecting a pin opens an in-place bottom sheet. Closing it preserves the map state and location. Navigation remains accessible even while the sheet is open.
 - Controls provide clear touch targets and visible keyboard focus without shadows or raised styling.
+
+## Full visual reset and mobile-first release direction
+
+The interface is rebuilt as a distinct, flat editorial experience. Mobile is the product surface. Desktop widths at and above 760px show a designed phone hand-off page rather than a stretched app.
+
+- Flat controls only: no raised/floating buttons, neumorphism, offset shadows, chunky outlines, sticker controls, or dashboard card grids.
+- The home screen begins with an editorial invitation and a lived-in Lagos illustration, then offers search, mood, time/spend, and plan creation. Discovery uses varied illustration crops and typography instead of repeated panels.
+- The map fills the mobile canvas above persistent bottom navigation. It opens without a place tray or decorative map title. Search, filters, and zoom remain available. Selecting a pin opens a contextual bottom sheet; dismissing it returns to the same map position. The illustrated canvas extends into southern streets and a waterfront edge and remains pan/zoom interactive.
+- Bottom navigation stays visible on every mobile screen, including Explore. Selecting Home, Plan, Saved, or Journal from the map always exits Explore.
+- Secondary screens share the warm field, forest-green typography, clay accents, sun-yellow moments, fine rules, editorial serif headlines, and flat actions, while each screen gets its own composition.
+- Illustration, not emoji, supplies character. Motion is purposeful and supports reduced-motion preferences. Sound is a later opt-in enhancement and never required for navigation.

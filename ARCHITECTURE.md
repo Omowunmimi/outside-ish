@@ -102,3 +102,9 @@ Keep the following responsibilities separate:
 - **Future geographic adapter:** real coordinates, tile/provider attribution, geocoding and routing integration.
 
 When the product needs real navigation, prefer opening a trusted external maps destination or integrate a suitable provider only after evaluating terms, pricing, attribution, coverage and accessibility. Do not present illustrative paths as actual walking routes.
+
+## Mobile-first visual shell and map navigation
+
+`redesign.css` defines the full-reset presentation. Existing interaction IDs and data attributes are preserved so client-side state and local storage remain intact. The desktop hand-off sits outside the mobile app shell and activates at 760px.
+
+Explore is a fixed map canvas constrained above persistent mobile bottom navigation. All map artwork, pins and the extended southern illustration live inside `#map-world`, controlled by pan/zoom transforms. The place sheet is selection-triggered only; no persistent discovery tray is mounted. Navigation must never hide bottom navigation on Explore.
