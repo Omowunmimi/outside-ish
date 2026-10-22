@@ -1,60 +1,34 @@
 # Outsideish Content Guide
 
 ## Editorial standard
-Outsideish is a city guide with a point of view. Every item should help someone imagine the experience and make a useful decision. Avoid generic descriptions such as “a great place to relax” unless the copy explains what makes the place distinct.
+Outsideish is a city guide with a point of view. Every item should help someone imagine an experience and make a useful decision. Write specifically, conversationally and with light wit. Avoid generic promotional copy and do not force slang into every sentence.
 
 ## Content types
-- **Place:** a specific venue or public place with practical visit information.
-- **Collection:** a curated set connected by a useful editorial idea.
-- **Neighbourhood story:** a short guide to the character and discoveries of an area.
-- **Adventure:** an outing with a clear mood, ordered stops and practical caveats.
-- **Field note:** a small observation, local detail or tip that adds texture to a discovery.
+- **Place:** venue/public place with practical visit information.
+- **Collection:** curated set tied to a useful editorial idea.
+- **Neighbourhood story:** short guide to an area's character and discoveries.
+- **Adventure:** outing with a mood, ordered stops and practical caveats.
+- **Field note:** small observation, local detail or tip.
 
-## Place entry checklist
+Vary the formats in the feed. Do not make every item read or look like the same venue card.
+
+## Place checklist
 - [ ] Accurate public name and category.
-- [ ] Neighbourhood and usable address.
-- [ ] Official source preferred; other sources labelled accurately.
-- [ ] Opening hours only when sourced, with caveat if they may change.
-- [ ] Prices marked as exact, range, or estimate. Never imply an estimate is guaranteed.
-- [ ] Description is specific and useful, not just promotional.
-- [ ] Mood and interest tags are appropriate.
-- [ ] Related places/collections are useful and actually relevant.
-- [ ] Source status and last checked date are recorded where possible.
-- [ ] Illustration is distinctive, locally thoughtful and does not imply geographic precision.
+- [ ] Neighbourhood and usable address where available.
+- [ ] Source URL/type, preferring the official source.
+- [ ] Last-checked date where practical.
+- [ ] Opening hours only when sourced; explain that they can change.
+- [ ] Price and duration marked as exact, range or estimate.
+- [ ] Specific, useful description.
+- [ ] Relevant mood/interest tags and related items.
+- [ ] Missing facts omitted or marked unknown, never invented.
+- [ ] Distinctive illustration that does not imply geographic precision.
 
 ## Trust labels
-Use labels such as:
-- **Official source** when linking to the venue's own site.
-- **Listing source** when information comes from a third-party listing.
-- **Editorial suggestion** for Outsideish-authored context.
-- **Estimate** for spend or duration that has not been verified.
-- **Check before leaving** when hours, programme, pricing or access can change.
-- **Illustrated map** when map geometry is editorial rather than geographic.
+Use Official source, Listing source, Editorial note, Estimate, Check before leaving and Illustrated map when appropriate. Do not say verified, open now, live, nearby, current or accurate unless the data source and method support the claim.
 
-Do not use “verified”, “open now”, “live”, “nearby” or “current” unless the underlying data and method support that claim.
+## Recommendations and continued discovery
+Explain why an item fits the selected mood, time, interests or area. If no exact match exists, explain the trade-off and show the closest useful alternative. Feed continuation preserves existing items and adds another batch. When the local starter dataset is exhausted, it may be remixed but must not be described as freshly fetched data. Avoid immediate duplicates where practical.
 
-## Voice
-- Specific, conversational, lightly witty.
-- Nigerian context should be grounded in real details and natural phrasing.
-- Never force slang into every sentence.
-- Avoid overly promotional superlatives and generic AI-style copy.
-- Practical information remains direct and easy to scan.
-- Do not promise safety, accessibility, availability or exact travel time without evidence.
-
-## Recommendations
-Recommendations should explain why an item fits a mood, time budget or interest. Avoid random ordering as the main discovery mechanism. When there is not enough data for a perfect match, explain the trade-off and offer the closest useful alternative.
-## 8. Endless discovery without misleading the visitor
-
-The experience should feel open-ended, but the interface must remain honest about the size and freshness of the content library.
-
-- Feed continuation should preserve previously rendered items and add another batch.
-- When the local prototype dataset is exhausted, it may re-mix editorial items. Avoid immediate duplicates and avoid copy that claims a fresh set of places was found.
-- In production, replace local cycling with paginated content from the reviewed content library.
-- Vary the content format: places, collections, neighbourhood stories, outing plans and field notes.
-- Every content item should lead to at least one relevant next step when possible.
-- Use editorial labels such as “A place to start”, “A small neighbourhood note” or “Try this kind of afternoon” instead of implying real-time activity.
-- Timely content must show a date or freshness context and link to a source.
-
-
-## Map art and interface constraints
-The illustrated city should feel lived in and locally grounded. Use researched architecture, street life, plants, transport, signage and neighbourhood detail. Keep geography consistent and separate decorative scene objects from interactive features. Do not use emojis or primitive-shape placeholders to represent places. Map selection opens a contextual bottom sheet without leaving the map. The map itself must be unobstructed until a place is selected.
+## Map and illustration
+Use researched Lagos architecture, signage, street activity, plants, transport and neighbourhood details. Give areas distinct visual landmarks and scene compositions. Do not reuse the same scene crop to imply city coverage. Separate decorative scenery from interactive markers. Do not derive real distance, route or travel time from illustration coordinates.
