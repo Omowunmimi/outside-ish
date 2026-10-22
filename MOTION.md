@@ -39,20 +39,21 @@ Avoid long animations for routine navigation. Do not delay touch response to com
 - Pin and label size should remain usable across zoom levels. If all content is SVG, consider a screen-space marker layer or scale-aware marker sizing.
 - Recenter animates to the default city extent only when motion is permitted.
 
-### Pin interaction
-- Idle: category-coded marker with clear contrast.
-- Hover (pointer devices): subtle lift/outline, not a bounce loop.
-- Press: quick compression or ink-fill change.
-- Selected: strong outline/halo and compact label/preview.
-- Selection should update the place tray/list in the same interaction.
-- A selected pin should remain selected until another is chosen or the selection is dismissed.
+### Map feature / pin interaction
+- Idle markers remain still. No continuous bobbing.
+- Press: subtle scale or fill change in 90–140 ms.
+- Selected: clear, restrained treatment that remains legible over the illustration.
+- Selecting a pin opens a contextual bottom sheet without navigating away.
+- Selecting another pin updates the same sheet and preserves map context.
 
-### Bottom sheet / map tray
-- Collapsed state exposes a concise heading and enough grip/affordance to expand.
-- Expanded state shows useful nearby discoveries without consuming the entire map.
-- Dragging the sheet is optional; a clear button must always be available.
-- Opening a place detail transitions from the selected map context and provides a clear return path.
-- Avoid trapping map gestures under the sheet.
+### Bottom sheet
+- Default state is hidden; the map opens unobstructed.
+- Enter from the bottom over 240–320 ms with a short ease-out.
+- Dismiss through a clear close action; Escape works on desktop. Swipe-down is optional only if it does not conflict with map gestures.
+- Opening or dismissing the sheet never resets map pan, zoom or filters.
+- Sheet content changes in place when another pin is selected.
+- Keep the map visible above the sheet; do not cover it on initial load.
+- Manage focus and announce the sheet title accessibly.
 
 ### Screen transitions
 - Small opacity/vertical shifts may signal a change of destination.
@@ -77,6 +78,9 @@ Avoid long animations for routine navigation. Do not delay touch response to com
 - Submit gives immediate feedback and then presents the result list.
 - Remix changes the order/selection but preserves the user's chosen constraints.
 - Swapping a stop updates the plan in context; announce the change accessibly.
+
+## Future sound direction
+Sound is not in the current release scope. Keep room for future optional ambient city texture or small interaction sounds, with these rules: off by default, never autoplay, user-initiated, persistent mute/stop control, low volume, no sound-only information, and no suggestion that a real venue is currently active. Test sensory accessibility and performance before shipping.
 
 ## Reduced motion
 When `prefers-reduced-motion: reduce` is enabled:
