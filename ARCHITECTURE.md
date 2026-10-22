@@ -1,7 +1,7 @@
 # Outsideish Technical Architecture
 
 ## Current implementation
-Outsideish is currently a static, client-rendered PWA built with HTML, CSS and vanilla JavaScript. It is hosted by the existing Vercel project and sourced from the `rebuild/outsideish-v1` branch in the `Omowunmimi/outside-ish` repository.
+Outsideish is currently a static, client-rendered PWA built with HTML, CSS and vanilla JavaScript. It is hosted by the existing Vercel project `outside-ish` and lives in the `Omowunmimi/outside-ish` repository. The redesign was merged to `main` and the production deployment was explicitly built from that main-branch commit. Check Vercel Production Branch tracking before future push-triggered releases; a preview URL is not proof of a production release.
 
 Core files:
 - `index.html`: screen structure, illustrated SVG map and navigation.
