@@ -202,3 +202,5 @@ body.map-open{overflow:hidden}body.map-open .bottom-nav{top:0}.explore-screen{he
   .discovery-card .discovery-art{height:96px}
 }
 @media(prefers-reduced-motion:reduce){.map-pin,.map-area use[href="#human"],.map-area use[href="#tree"]{animation:none!important}}
+
+.home-screen .kicker,.planner-screen .kicker,.results-title .kicker,.saved-title .kicker,.journal-cover .kicker,.profile-cover .kicker,.subhead .kicker{display:none!important}.arrival-copy .intro-line{margin-bottom:0}.arrival-copy{max-width:390px}
