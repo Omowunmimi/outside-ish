@@ -71,3 +71,28 @@ Before merging:
 - Test at 360, 390, 768, 1024 and 1440px widths.
 - Check horizontal overflow, keyboard focus, reduced motion, touch target sizes and console errors.
 - Verify the preview deployment points to the intended branch and commit.
+## 9. Discovery feed evolution
+
+The current prototype bundles a small set of places and outings in app.js. The feed may append another mixed batch from that local set so browsing does not stop abruptly, but cycling a small set is not equivalent to having a genuinely large catalogue.
+
+Recommended evolution:
+- Extract content into structured data files or a content service.
+- Use stable IDs, categories, tags, source metadata, freshness timestamps and editorial status.
+- Implement cursor-based pagination and a loading/retry state.
+- Keep feed rendering independent from data retrieval.
+- Add ranking inputs for mood, time, budget, interests, area, diversity and editorial priority.
+- Preserve feed cursor and scroll position across detail navigation.
+- Add deduplication within a session and avoid immediate repeats when a new batch begins.
+- Introduce analytics through a privacy-conscious adapter only after defining the data policy.
+
+## 10. Map renderer boundaries
+
+The current SVG uses illustration-space coordinates. Those coordinates are only for artwork layout and marker placement. They must never be used for geographic distance, routing or live proximity calculations.
+
+Keep the following responsibilities separate:
+- **Map renderer:** draws the illustrated map and its interactive markers.
+- **Map interaction controller:** pan, zoom, recenter, marker selection and filters.
+- **Discovery content:** place details and editorial metadata.
+- **Future geographic adapter:** real coordinates, tile/provider attribution, geocoding and routing integration.
+
+When the product needs real navigation, prefer opening a trusted external maps destination or integrate a suitable provider only after evaluating terms, pricing, attribution, coverage and accessibility. Do not present illustrative paths as actual walking routes.
