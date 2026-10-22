@@ -26,6 +26,7 @@ The current place set is a starting collection, not a complete or live Lagos dir
 - [MOTION.md](MOTION.md): motion tokens, map gestures, transitions, feedback, reduced-motion and QA requirements.
 - [ARCHITECTURE.md](ARCHITECTURE.md): current technical structure, state boundaries, map model, PWA and future modules.
 - [CONTENT_GUIDE.md](CONTENT_GUIDE.md): editorial voice, source/freshness labels and place data quality checklist.
+- [QA_PLAN.md](QA_PLAN.md): responsive, interaction, accessibility and release checks.
 
 ## Project structure
 
