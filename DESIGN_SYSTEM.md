@@ -189,3 +189,17 @@ The map is an authored illustrated city environment, not a schematic diagram. Bu
 ### Navigation and controls
 
 The main navigation remains available while exploring the map. On mobile it sits above the bottom safe area and must never be hidden by the map view. Search and filter are flat, square-cornered controls. Place details appear in a contextual bottom sheet only after selecting a pin or place; dismissing it returns to the map.
+
+## Full-reset visual direction
+
+**Premise:** an illustrated field guide to going out, with the warmth of a neighbourhood publication and the curiosity of wandering through a real city. Not a dashboard, sticker UI, or toy interface.
+
+**Palette:** warm field `#f2eddf`, paper `#faf7ed`, deep forest `#315b45`, ink `#263b32`, clay `#c75c43`, sun `#e6bd53`, and restrained leafy greens.
+
+**Controls:** flat fills or transparent backgrounds; no elevation, drop shadows, offset shadows, heavy outlines, or neumorphic treatment. Active states use colour, typography, or a fine rule.
+
+**Type and composition:** expressive serif headlines with compact sans-serif supporting text. Use asymmetry, varied image crops, breathing room, thin dividers, and editorial sequencing. Avoid repetitive all-caps labels, repeated cards, oversized marketing hero blocks, and dashboard grids.
+
+**Illustration:** the city is the signature. Use layered streets with storefronts, balconies, plants, people, local transport, waterfront edges and visual discoveries. No emoji art or primitive roof/trees. Different crops are temporary scaffolding until a larger venue-specific illustration library exists.
+
+**Mobile and desktop:** mobile is the full product, with five-item bottom navigation on the map. Desktop visitors receive a bespoke phone hand-off page.
