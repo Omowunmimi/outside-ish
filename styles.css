@@ -298,3 +298,6 @@ h1 em,.planner-title h1 em,.results-title h1 em,.saved-title h1 em,.journal-cove
 .plan-discovery .discovery-art{background:var(--mint)!important}
 .plan-discovery:nth-child(3n) .discovery-art{background:var(--yellow)!important}
 @media(min-width:720px){.keep-wandering{grid-column:2;width:100%;margin:0}.home-screen.active{align-content:start}.discovery-card{min-height:190px}.discovery-copy p{font-size:11px;line-height:1.45}}
+
+.map-thumb.mint{background:var(--mint)}.map-thumb.coral{background:var(--coral)}.map-thumb.green{background:#a7c69a}
+.discovery-art.mint{background:var(--mint)!important}.discovery-art.coral{background:var(--coral)!important}.discovery-art.green{background:#a7c69a!important}
