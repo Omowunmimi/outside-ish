@@ -491,3 +491,22 @@ body.map-open .full-map{width:100%;height:100%;inset:0;transform-origin:center;t
 .saved-art,.detail-doodle,.adventure-illustration{position:relative;overflow:hidden}
 .saved-art .art-scene,.detail-doodle .art-scene,.adventure-illustration .art-scene{position:absolute;inset:0}
 .map-pin path:first-of-type{stroke-width:1.5}
+
+/* Small interface marks are drawn with CSS/SVG rather than emoji glyphs. */
+.brand-mark{width:28px;height:28px;display:inline-block;position:relative;background:#e5bf58;border-radius:9px;transform:rotate(-7deg)}
+.brand-mark:before{content:"";position:absolute;left:7px;right:7px;top:13px;height:2px;background:#34352f;transform:rotate(45deg)}
+.brand-mark:after{content:"";position:absolute;left:7px;right:7px;top:13px;height:2px;background:#34352f;transform:rotate(-45deg)}
+.profile-dot{display:grid;place-items:center}.profile-dot-mark{width:13px;height:13px;border:1.5px solid currentColor;border-radius:50%;position:relative;display:block}
+.profile-dot-mark:after{content:"";position:absolute;left:-4px;right:-4px;bottom:-8px;height:7px;border:1.5px solid currentColor;border-radius:9px 9px 4px 4px}
+.nav-glyph{display:block;width:20px;height:20px;position:relative;margin:0 auto 3px;color:currentColor}
+.nav-home:before{content:"";position:absolute;left:3px;top:6px;width:12px;height:11px;border:1.5px solid currentColor;border-top:0}
+.nav-home:after{content:"";position:absolute;left:3px;top:1px;width:12px;height:12px;border-top:1.5px solid currentColor;border-left:1.5px solid currentColor;transform:rotate(45deg)}
+.nav-explore:before{content:"";position:absolute;inset:2px;border:1.5px solid currentColor;border-radius:50%}
+.nav-explore:after{content:"";position:absolute;left:7px;top:1px;width:5px;height:13px;border:1.5px solid currentColor;transform:rotate(35deg);background:var(--cream)}
+.nav-plan:before{content:"";position:absolute;left:3px;top:3px;width:13px;height:13px;border:1.5px solid currentColor;border-radius:50%}
+.nav-plan:after{content:"";position:absolute;left:9px;top:0;width:1.5px;height:19px;background:currentColor;transform:rotate(45deg)}
+.nav-saved:before{content:"";position:absolute;left:4px;top:2px;width:11px;height:15px;border:1.5px solid currentColor;border-radius:2px 2px 0 0}
+.nav-saved:after{content:"";position:absolute;left:7px;bottom:0;width:6px;height:6px;border-left:1.5px solid currentColor;border-top:1.5px solid currentColor;transform:rotate(45deg);background:var(--cream)}
+.nav-log:before{content:"";position:absolute;inset:2px 3px;border:1.5px solid currentColor;border-radius:2px}
+.nav-log:after{content:"";position:absolute;left:6px;right:6px;top:7px;height:1px;background:currentColor;box-shadow:0 4px currentColor,0 8px currentColor}
+.profile-row-mark{display:inline-block;width:18px;height:18px;border:1.5px solid currentColor;border-radius:50%;position:relative}
