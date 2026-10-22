@@ -152,3 +152,9 @@ When `prefers-reduced-motion: reduce` is enabled:
 ## Motion direction update
 
 Motion should make the city feel quietly alive without turning the interface into a toy. Keep controls flat at rest and during interaction: no lift, shadow growth, or pseudo-3D press effect. Use a quick colour change or subtle opacity shift for button feedback. Map pans and zooms should feel continuous and user-directed. Pins may have a very restrained staggered arrival when the map first opens, but avoid constant bobbing that makes place selection difficult. The place sheet enters from below with a short, calm transition; closing it should reveal the exact map position beneath it. Future optional sound must be user-controlled, off by default, respectful of device settings, and never required to understand map feedback. Honor prefers-reduced-motion.
+
+## Full-reset motion principles
+
+Motion makes the city feel responsive, not toy-like. Use short transitions: 180–260ms for contextual sheets, 120–180ms for selection changes, and restrained ease-out for navigation. Map panning and zooming should feel direct; place selection gently emphasizes the chosen location without a large bounce.
+
+Future ambient sound is opt-in and never autoplayed. It should be sparse, low-volume, contextually meaningful, and controlled by a clear mute setting. All navigation and feedback work with sound off. Honour `prefers-reduced-motion`.
