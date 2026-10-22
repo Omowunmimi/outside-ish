@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6c9b6">
+<meta name="description" content="A curious little companion for finding your kind of Lagos day.">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<title>outside-ish — go see small small</title>
+</head>
+<body>
+<div class="app" id="app">
+  <main class="screen active" id="homeScreen" aria-label="Home">
+    <div class="home-top">
+      <button class="wordmark" data-screen="home" aria-label="outside-ish home"><span class="brand-spark">✳</span> outside-ish<span class="brand-dot">.</span></button>
+      <button class="round-button profile-button" id="profileButton" aria-label="Your little corner"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0"/></svg></button>
+    </div>
+    <div class="welcome-copy">
+      <p class="hello" id="helloLine">Lagos is doing Lagos things.</p>
+      <h1>Let's go see<br><span>small small.</span></h1>
+      <p class="welcome-sub">A little detour can make your whole day.</p>
+    </div>
+    <form class="search-bar" id="searchForm">
+      <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+      <input id="searchInput" type="search" placeholder="A quiet bookshop? Suya and gist?" aria-label="Search places, moods and adventures">
+      <button aria-label="Search"><span>↗</span></button>
+    </form>
+    <div class="home-map-teaser" role="button" tabindex="0" data-screen="explore" aria-label="Open the illustrated Lagos map">
+      <svg class="teaser-map" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="600" height="260" fill="#d8e7d9"/>
+        <path d="M0 175 C100 145 125 205 220 177 S380 120 455 163 S545 197 600 160 L600 260 L0 260Z" fill="#c2ddd5"/>
+        <path d="M-20 70 C110 20 180 125 280 76 S445 20 630 75" fill="none" stroke="#f7edcf" stroke-width="34" stroke-linecap="round"/>
+        <path d="M-20 70 C110 20 180 125 280 76 S445 20 630 75" fill="none" stroke="#fff9e8" stroke-width="22" stroke-linecap="round"/>
+        <path d="M105 -20 C135 60 215 100 190 280 M390 -20 C365 60 415 130 385 280 M-20 215 C170 180 360 235 630 185" fill="none" stroke="#fff8e7" stroke-width="16" stroke-linecap="round"/>
+        <g transform="translate(50 105)"><rect x="0" y="0" width="66" height="47" rx="8" fill="#f4a28d"/><path d="M-4 0 33 -22 70 0Z" fill="#ad625b"/><rect x="9" y="15" width="12" height="16" rx="2" fill="#ffe8ba"/><rect x="44" y="15" width="12" height="16" rx="2" fill="#ffe8ba"/></g>
+        <g transform="translate(230 120)"><rect width="56" height="45" rx="7" fill="#e8b4c7"/><path d="M-4 0 28 -20 60 0Z" fill="#a85e7d"/><rect x="9" y="14" width="12" height="14" rx="2" fill="#fff0ce"/><rect x="35" y="14" width="12" height="14" rx="2" fill="#fff0ce"/></g>
+        <g transform="translate(430 110)"><rect width="76" height="54" rx="7" fill="#e5c56f"/><path d="M-5 0 38 -24 81 0Z" fill="#bd8256"/><rect x="10" y="15" width="14" height="17" rx="2" fill="#fff0ce"/><rect x="51" y="15" width="14" height="17" rx="2" fill="#fff0ce"/></g>
+        <g fill="#6f9b72"><circle cx="145" cy="154" r="15"/><circle cx="158" cy="144" r="14"/><rect x="146" y="151" width="7" height="20" rx="3" fill="#946e4d"/><circle cx="337" cy="178" r="17"/><circle cx="350" cy="166" r="14"/><rect x="339" y="175" width="7" height="22" rx="3" fill="#946e4d"/><circle cx="536" cy="192" r="15"/><circle cx="548" cy="182" r="13"/><rect x="538" y="190" width="7" height="18" rx="3" fill="#946e4d"/></g>
+        <g transform="translate(320 48)"><circle r="24" fill="#fff8e9" stroke="#4f4059" stroke-width="2"/><path d="M-8 1 0 -9 8 1 0 10Z" fill="#ec795e"/><circle cy="-2" r="3" fill="#4f4059"/></g>
+        <g transform="translate(185 211)"><rect x="-25" y="-10" width="50" height="21" rx="7" fill="#e4a14f" stroke="#5a4b4b" stroke-width="2"/><rect x="-14" y="-7" width="11" height="7" rx="2" fill="#fff1c8"/><rect x="3" y="-7" width="11" height="7" rx="2" fill="#fff1c8"/><circle cx="-14" cy="11" r="5" fill="#594b49"/><circle cx="14" cy="11" r="5" fill="#594b49"/></g>
+        <g transform="translate(475 44)"><path d="M0 18 9 0 18 18Z" fill="#f18b70"/><circle cx="9" cy="20" r="7" fill="#5b4b63"/><path d="M4 27 0 39 M14 27 19 39" stroke="#5b4b63" stroke-width="4" stroke-linecap="round"/></g>
+        <g fill="#4d5361" font-family="system-ui" font-size="12" font-weight="700"><text x="25" y="32">Yaba</text><text x="270" y="28">Ikeja GRA</text><text x="425" y="237">Ikoyi-ish</text></g>
+      </svg>
+      <div class="map-teaser-caption"><span class="live-dot"></span><span>THE CITY HAS SIDE QUESTS</span><span class="teaser-arrow">↗</span></div>
+    </div>
+    <div class="start-heading"><h2>What's your kind of today?</h2><span>Pick a vibe. Skip the stress.</span></div>
+    <div class="mood-strip" id="moodStrip">
+      <button class="mood-chip selected" data-mood="surprise"><span class="mood-emoji">✳</span><span>Surprise me</span></button>
+      <button class="mood-chip" data-mood="soft"><span class="mood-emoji">☁</span><span>Soft life</span></button>
+      <button class="mood-chip" data-mood="food"><span class="mood-emoji">🍊</span><span>Chop life</span></button>
+      <button class="mood-chip" data-mood="curious"><span class="mood-emoji">⌕</span><span>Curious</span></button>
+      <button class="mood-chip" data-mood="outside"><span class="mood-emoji">✺</span><span>Outside outside</span></button>
+    </div>
+    <div class="quick-controls">
+      <button class="quick-control" id="timeControl"><span class="control-icon">◷</span><span><small>How much time?</small><strong id="timeValue">A few hours</strong></span><span class="chevron">⌄</span></button>
+      <button class="quick-control" id="budgetControl"><span class="control-icon coin">₦</span><span><small>What's the budget?</small><strong id="budgetValue">Keep it easy</strong></span><span class="chevron">⌄</span></button>
+    </div>
+    <button class="primary-button full" id="surpriseButton">Find my kind of afternoon <span>↗</span></button>
+    <div class="home-footnote"><span>Made for the “I should leave this house” feeling.</span><span>✿</span></div>
+  </main>
+
+  <main class="screen map-screen" id="exploreScreen" aria-label="Explore map">
+    <div class="map-stage" id="mapStage">
+      <svg id="cityMap" class="city-map" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated map of Lagos with streets, places, people and local details">
+        <defs>
+          <pattern id="grassDots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r="1.8" fill="#7b9e78" opacity=".4"/><circle cx="18" cy="20" r="1.2" fill="#7b9e78" opacity=".3"/></pattern>
+          <pattern id="waterWaves" width="40" height="26" patternUnits="userSpaceOnUse"><path d="M0 9 Q10 2 20 9 T40 9 M-10 22 Q0 15 10 22 T30 22" fill="none" stroke="#76aaa8" stroke-width="2" opacity=".45"/></pattern>
+          <g id="tree"><path d="M-2 10 0 0 3 10" stroke="#886b4e" stroke-width="4" fill="none"/><circle r="14" fill="#739b72"/><circle cx="-7" cy="-4" r="7" fill="#8caf7e"/><circle cx="6" cy="-7" r="6" fill="#5e8868"/></g>
+          <g id="person"><ellipse cy="17" rx="9" ry="4" fill="#5e6458" opacity=".2"/><path d="M-4 6 -6 16 M4 6 7 16" stroke="#55465b" stroke-width="4" stroke-linecap="round"/><path d="M-7 -3 Q0 -8 7 -3 L6 8 -6 8Z" fill="currentColor" stroke="#594a58" stroke-width="1.5"/><circle cy="-9" r="5.5" fill="#8e5b42"/><path d="M-6 -10 Q-5 -18 2 -15 L6 -11" fill="#332e3d"/></g>
+          <g id="danfo"><rect x="-26" y="-13" width="52" height="26" rx="7" fill="#e7a548" stroke="#564850" stroke-width="2.5"/><rect x="-17" y="-9" width="12" height="8" rx="2" fill="#fdf0c9"/><rect x="2" y="-9" width="12" height="8" rx="2" fill="#fdf0c9"/><path d="M-20 5 H20" stroke="#594b4b" stroke-width="2"/><circle cx="-16" cy="13" r="5" fill="#4f4650"/><circle cx="16" cy="13" r="5" fill="#4f4650"/><text x="0" y="4" font-size="7" text-anchor="middle" fill="#54454a" font-weight="900">LAGOS</text></g>
+          <g id="shop"><rect x="-33" y="-19" width="66" height="45" rx="5" fill="currentColor" stroke="#65535b" stroke-width="2"/><path d="M-38 -19 0 -39 38 -19Z" fill="#9b5e68" stroke="#65535b" stroke-width="2"/><rect x="-22" y="-7" width="15" height="17" rx="2" fill="#ffe9bb"/><rect x="7" y="-7" width="15" height="17" rx="2" fill="#ffe9bb"/><rect x="-7" y="9" width="14" height="17" rx="2" fill="#b07c5d"/><path d="M-31 -15 H31" stroke="#fff0cb" stroke-width="4" stroke-dasharray="8 5"/></g>
+        </defs>
+        <rect width="1000" height="1200" fill="#e9d8ad"/>
+        <path d="M0 0H1000V180C850 205 810 120 680 190S420 245 290 180 100 260 0 210Z" fill="#bdd9d3"/>
+        <path d="M0 0H1000V180C850 205 810 120 680 190S420 245 290 180 100 260 0 210Z" fill="url(#waterWaves)"/>
+        <path d="M0 950C120 890 210 970 310 920S530 880 620 950 850 910 1000 980V1200H0Z" fill="#bdd9d3"/>
+        <path d="M0 950C120 890 210 970 310 920S530 880 620 950 850 910 1000 980V1200H0Z" fill="url(#waterWaves)"/>
+        <g fill="#c8d7b3"><path d="M0 260 120 230 185 325 90 390 0 360Z"/><path d="M600 240 760 205 820 290 735 360 615 330Z"/><path d="M70 640 190 590 270 665 200 745 65 720Z"/><path d="M690 690 840 640 930 735 830 800 700 775Z"/></g>
+        <g fill="url(#grassDots)"><path d="M0 260 120 230 185 325 90 390 0 360Z"/><path d="M600 240 760 205 820 290 735 360 615 330Z"/><path d="M70 640 190 590 270 665 200 745 65 720Z"/><path d="M690 690 840 640 930 735 830 800 700 775Z"/></g>
+        <g fill="#f7edcf" stroke="#d9c89f" stroke-width="2">
+          <path d="M-40 420 Q180 360 350 445T700 435 1050 400" fill="none" stroke-width="44"/><path d="M-40 420 Q180 360 350 445T700 435 1050 400" fill="none" stroke="#fff8e8" stroke-width="30"/>
+          <path d="M100 -30 Q170 210 330 330T400 600 520 850 500 1230" fill="none" stroke-width="38"/><path d="M100 -30 Q170 210 330 330T400 600 520 850 500 1230" fill="none" stroke="#fff8e8" stroke-width="24"/>
+          <path d="M780 -30 Q720 180 780 350T720 620 850 850 810 1230" fill="none" stroke-width="38"/><path d="M780 -30 Q720 180 780 350T720 620 850 850 810 1230" fill="none" stroke="#fff8e8" stroke-width="24"/>
+          <path d="M-30 750 Q220 690 450 740T1030 690" fill="none" stroke-width="32"/><path d="M-30 750 Q220 690 450 740T1030 690" fill="none" stroke="#fff8e8" stroke-width="20"/>
+          <path d="M-30 560 Q250 520 480 560T1030 520" fill="none" stroke-width="24"/><path d="M-30 560 Q250 520 480 560T1030 520" fill="none" stroke="#fff8e8" stroke-width="14"/>
+        </g>
+        <g stroke="#d8c9a9" stroke-width="2" fill="#e8a99a">
+          <rect x="210" y="250" width="82" height="54" rx="5"/><rect x="310" y="250" width="68" height="44" rx="5"/><rect x="390" y="260" width="55" height="62" rx="5"/><rect x="455" y="260" width="85" height="48" rx="5"/>
+          <rect x="535" y="300" width="55" height="45" rx="5"/><rect x="600" y="260" width="74" height="62" rx="5"/><rect x="700" y="280" width="58" height="48" rx="5"/>
+          <rect x="150" y="490" width="62" height="45" rx="5"/><rect x="220" y="500" width="78" height="52" rx="5"/><rect x="330" y="490" width="62" height="46" rx="5"/><rect x="435" y="500" width="74" height="48" rx="5"/>
+          <rect x="550" y="490" width="62" height="55" rx="5"/><rect x="630" y="500" width="82" height="42" rx="5"/><rect x="820" y="500" width="65" height="52" rx="5"/>
+          <rect x="240" y="810" width="75" height="48" rx="5"/><rect x="330" y="800" width="60" height="50" rx="5"/><rect x="430" y="810" width="72" height="55" rx="5"/><rect x="560" y="800" width="68" height="46" rx="5"/><rect x="650" y="810" width="84" height="50" rx="5"/>
+        </g>
+        <g fill="#e4c77e" stroke="#c3a76b" stroke-width="2"><rect x="225" y="260" width="24" height="20" rx="3"/><rect x="335" y="260" width="18" height="18" rx="3"/><rect x="405" y="273" width="20" height="18" rx="3"/><rect x="475" y="271" width="20" height="20" rx="3"/><rect x="555" y="310" width="20" height="17" rx="3"/><rect x="615" y="272" width="20" height="18" rx="3"/><rect x="715" y="292" width="18" height="18" rx="3"/><rect x="165" y="500" width="18" height="18" rx="3"/><rect x="240" y="510" width="20" height="18" rx="3"/><rect x="350" y="500" width="20" height="18" rx="3"/><rect x="455" y="510" width="20" height="18" rx="3"/><rect x="570" y="500" width="20" height="18" rx="3"/><rect x="655" y="510" width="20" height="18" rx="3"/><rect x="255" y="820" width="20" height="18" rx="3"/><rect x="345" y="810" width="18" height="18" rx="3"/><rect x="450" y="820" width="20" height="18" rx="3"/><rect x="580" y="810" width="18" height="18" rx="3"/><rect x="670" y="820" width="20" height="18" rx="3"/></g>
+        <g><use href="#tree" x="70" y="300"/><use href="#tree" x="110" y="330"/><use href="#tree" x="140" y="300"/><use href="#tree" x="860" y="290"/><use href="#tree" x="900" y="320"/><use href="#tree" x="850" y="350"/><use href="#tree" x="90" y="640"/><use href="#tree" x="120" y="670"/><use href="#tree" x="165" y="640"/><use href="#tree" x="870" y="640"/><use href="#tree" x="900" y="670"/><use href="#tree" x="840" y="700"/><use href="#tree" x="170" y="860"/><use href="#tree" x="200" y="885"/><use href="#tree" x="760" y="880"/><use href="#tree" x="800" y="910"/><use href="#tree" x="900" y="870"/></g>
+        <g transform="translate(110 480) rotate(-12)"><use href="#danfo"/></g><g transform="translate(560 420) rotate(5)"><use href="#danfo"/></g><g transform="translate(685 735) rotate(-8)"><use href="#danfo"/></g>
+        <g transform="translate(260 395)" color="#ef9c8d"><use href="#shop"/></g><g transform="translate(730 460)" color="#d9b2c8"><use href="#shop"/></g><g transform="translate(360 700)" color="#e4c66e"><use href="#shop"/></g><g transform="translate(810 835)" color="#9fbea1"><use href="#shop"/></g>
+        <g transform="translate(180 400)"><use href="#person" color="#dc826b"/></g><g transform="translate(200 425) scale(.8)"><use href="#person" color="#8c9db4"/></g><g transform="translate(470 365)"><use href="#person" color="#d7a6c0"/></g><g transform="translate(500 385) scale(.85)"><use href="#person" color="#b5a4d1"/></g><g transform="translate(620 600)"><use href="#person" color="#d98c6c"/></g><g transform="translate(650 625) scale(.8)"><use href="#person" color="#8fbaa2"/></g><g transform="translate(290 620)"><use href="#person" color="#d5b35e"/></g><g transform="translate(830 600)"><use href="#person" color="#d89eb5"/></g><g transform="translate(445 900)"><use href="#person" color="#a6b8a0"/></g><g transform="translate(480 925) scale(.8)"><use href="#person" color="#e0a16c"/></g>
+        <g fill="#4d5361" font-family="system-ui" font-weight="800"><text x="215" y="225" font-size="22">YABA</text><text x="630" y="225" font-size="20">IKEJA GRA</text><text x="80" y="590" font-size="20">SURULERE</text><text x="715" y="770" font-size="20">VI / IKoyi-ish</text><text x="300" y="880" font-size="18">A LITTLE SIDE STREET</text></g>
+        <g id="mapPins">
+          <g class="map-pin" data-place="bookshop" transform="translate(330 350)"><ellipse cy="28" rx="18" ry="6" fill="#7d6b5a" opacity=".2"/><path d="M0 20C-12 5 -22 -2 -22 -13a22 22 0 1 1 44 0C22 -2 12 5 0 20Z" fill="#f4b5ca" stroke="#59465a" stroke-width="3"/><circle cy="-13" r="12" fill="#fff2d9"/><text y="-8" text-anchor="middle" font-size="15" fill="#59465a">✿</text></g>
+          <g class="map-pin" data-place="food" transform="translate(660 560)"><ellipse cy="28" rx="18" ry="6" fill="#7d6b5a" opacity=".2"/><path d="M0 20C-12 5 -22 -2 -22 -13a22 22 0 1 1 44 0C22 -2 12 5 0 20Z" fill="#f4c96f" stroke="#59465a" stroke-width="3"/><circle cy="-13" r="12" fill="#fff2d9"/><text y="-8" text-anchor="middle" font-size="15" fill="#59465a">♨</text></g>
+          <g class="map-pin" data-place="art" transform="translate(500 800)"><ellipse cy="28" rx="18" ry="6" fill="#7d6b5a" opacity=".2"/><path d="M0 20C-12 5 -22 -2 -22 -13a22 22 0 1 1 44 0C22 -2 12 5 0 20Z" fill="#b8a6dc" stroke="#59465a" stroke-width="3"/><circle cy="-13" r="12" fill="#fff2d9"/><text y="-8" text-anchor="middle" font-size="15" fill="#59465a">✳</text></g>
+        </g>
+      </svg>
+      <div class="map-top-controls"><button class="map-back round-button" data-screen="home" aria-label="Back home">⌄</button><form class="map-search" id="mapSearchForm"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="mapSearchInput" placeholder="Find your next little thing" aria-label="Search the map"><button aria-label="Search map">↗</button></form><button class="round-button map-filter" id="mapFilter" aria-label="Filter map">☷</button></div>
+      <div class="map-floating-label"><span class="live-dot"></span><span>THE CITY IS WIDE AWAKE</span><button id="mapLayerToggle" aria-label="Change map mood">✺</button></div>
+      <div class="map-place-label label-bookshop">A bookshop hiding in plain sight <span>↗</span></div>
+      <div class="map-place-label label-food">Pepper, gist & cold drink <span>↗</span></div>
+      <div class="map-zoom"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button></div>
+      <div class="map-current-location"><span class="location-pulse"></span> Around Lagos</div>
+      <div class="map-bottom-sheet" id="mapBottomSheet">
+        <div class="sheet-grabber"></div>
+        <div class="sheet-heading"><div><p id="mapEyebrow">A little bit of everywhere</p><h2 id="mapSheetTitle">Where should we wander?</h2></div><button class="round-button sheet-close" id="closeMapSheet" aria-label="Close map details">⌄</button></div>
+        <div class="map-suggestions" id="mapSuggestions">
+          <button class="mini-place" data-place="bookshop"><span class="mini-illustration pink-scene">▤<i>✿</i></span><span><b>Pages & quiet corners</b><small>Bookshops · slow afternoon</small></span><span class="mini-arrow">↗</span></button>
+          <button class="mini-place" data-place="food"><span class="mini-illustration orange-scene">♨<i>✦</i></span><span><b>Something hot, please</b><small>Local food · good gist</small></span><span class="mini-arrow">↗</span></button>
+          <button class="mini-place" data-place="art"><span class="mini-illustration lilac-scene">✳<i>⌁</i></span><span><b>Art without the fuss</b><small>Creative corners · curious people</small></span><span class="mini-arrow">↗</span></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <main class="screen" id="plansScreen" aria-label="Adventures">
+    <div class="subscreen-top"><button class="wordmark" data-screen="home"><span class="brand-spark">✳</span> outside-ish<span class="brand-dot">.</span></button><button class="round-button" data-screen="explore" aria-label="Open map">⌖</button></div>
+    <div class="plan-intro"><p class="hello">No need to overthink am.</p><h1>Three ways to<br><span>spend your day.</span></h1><p>Plans with a little plot. Pick one, remix it, make it yours.</p></div>
+    <div class="plan-controls"><button class="filter-pill active" data-filter="all">All the vibes</button><button class="filter-pill" data-filter="soft">Soft life</button><button class="filter-pill" data-filter="food">Chop life</button><button class="filter-pill" data-filter="curious">Curious</button></div>
+    <div id="adventureList" class="adventure-list"></div>
+  </main>
+
+  <main class="screen" id="savedScreen" aria-label="Saved places">
+    <div class="subscreen-top"><button class="wordmark" data-screen="home"><span class="brand-spark">✳</span> outside-ish<span class="brand-dot">.</span></button><button class="round-button" id="savedExplore" aria-label="Explore map">⌖</button></div>
+    <div class="saved-intro"><p class="hello">For when the time is right.</p><h1>Your little<br><span>stash of plans.</span></h1><p>All the places you said “one day” to.</p></div>
+    <div class="saved-tabs"><button class="saved-tab active" data-savedtab="all">Everything</button><button class="saved-tab" data-savedtab="places">Places</button><button class="saved-tab" data-savedtab="plans">Adventures</button></div>
+    <div id="savedContent" class="saved-content"></div>
+  </main>
+
+  <main class="screen" id="journalScreen" aria-label="Your city journal">
+    <div class="subscreen-top"><button class="wordmark" data-screen="home"><span class="brand-spark">✳</span> outside-ish<span class="brand-dot">.</span></button><button class="round-button" id="journalExplore" aria-label="Explore map">⌖</button></div>
+    <div class="journal-cover"><div class="journal-sun">☼</div><p class="hello">The city, through your eyes.</p><h1>Little things<br><span>you've seen.</span></h1><p>Your own tiny archive of Lagos moments.</p><div class="journal-doodle">✿　⌁　✳</div></div>
+    <div class="journal-stats"><div><strong id="visitedCount">0</strong><span>little discoveries</span></div><div><strong id="journalDays">0</strong><span>days outside</span></div><div><strong id="savedCount">0</strong><span>for another day</span></div></div>
+    <div class="journal-heading"><h2>Your story so far</h2><button id="markVisited">+ Add a visit</button></div>
+    <div id="journalContent" class="journal-content"></div>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-item active" data-screen="home"><span class="nav-icon">⌂</span><small>Home</small></button>
+    <button class="nav-item" data-screen="explore"><span class="nav-icon">⌖</span><small>Explore</small></button>
+    <button class="nav-item nav-plan" data-screen="plans"><span class="nav-icon">✳</span><small>Plans</small></button>
+    <button class="nav-item" data-screen="saved"><span class="nav-icon">♡</span><small>Saved</small><i class="nav-count" id="navSavedCount" hidden>0</i></button>
+    <button class="nav-item" data-screen="journal"><span class="nav-icon">▤</span><small>Journal</small></button>
+  </nav>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <section class="bottom-modal" id="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="sheet-grabber"></div><button class="modal-close round-button" id="modalClose" aria-label="Close">×</button><div id="modalContent"></div>
+  </section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/app.js" defer></script>
+</body>
+</html>
