@@ -121,8 +121,8 @@ Supporting destinations:
 1. Open Explore.
 2. See the city as an illustrated, movable surface with visible neighbourhoods and distinct points of interest.
 3. Pan by touch/mouse drag and zoom with pinch, wheel or controls.
-4. Tap a place pin to see a compact preview.
-5. Open full detail, save, or continue exploring nearby.
+4. Tap a place pin to open its contextual bottom sheet without leaving the map.
+5. Save, mark visited, check its source, follow a related discovery, or dismiss the sheet and continue exploring.
 6. Move to another neighbourhood and discover additional content.
 7. Filters adjust visible categories without making the rest of the map unusable.
 8. A “recenter” action returns the map to its initial city extent.
