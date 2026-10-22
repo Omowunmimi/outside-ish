@@ -81,7 +81,7 @@ Wants to remember places visited and ideas saved for later.
 
 Primary navigation:
 - **For you:** A welcoming editorial feed, search, mood shortcuts and continue-discovering modules.
-- **Explore:** Full-screen illustrated city map with pan, zoom, tappable places, neighbourhoods, filters and a discovery tray.
+- **Explore:** Full-screen illustrated city map with pan, zoom, tappable places, neighbourhoods, filters and a contextual bottom sheet that appears only after selection.
 - **Make a plan:** Optional preferences for time, mood, budget, starting neighbourhood and interests.
 - **Saved:** Places and plans saved on the device.
 - **My log:** Visited places and the user's personal city story.
@@ -419,7 +419,7 @@ The initial map is an illustrated, editorial city map. It communicates neighbour
 - Select a place marker and open its detail view.
 - Filter visible places by supported categories.
 - Search from the map.
-- Browse a synchronised discovery list or bottom sheet.
+- Select a map feature to open an in-place contextual bottom sheet. No persistent discovery list covers the map.
 - Keep map controls anchored to the viewport while the map artwork moves.
 - Prevent a drag gesture from accidentally activating a place marker.
 - Provide accessible controls in addition to gestures.
@@ -432,7 +432,7 @@ The initial map is an illustrated, editorial city map. It communicates neighbour
 3. Neighbourhood names
 4. Distinctive blocks, buildings and street details
 5. Place markers and selected-place state
-6. Supporting controls and discovery sheet
+6. Essential controls and selection-triggered place sheet
 
 The city illustration should use recognizable architectural variation: mixed rooflines, balconies, shop fronts, signs, awnings, doors, window groupings, trees with varied silhouettes, people, street vendors and vehicles. Avoid relying on isolated triangles, circles or emoji to communicate a whole building or street scene. Keep decorative detail subordinate to map legibility.
 
