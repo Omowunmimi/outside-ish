@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "Outsideish · Lagos City Companion",
+  "short_name": "Outsideish",
+  "description": "A playful city discovery companion for finding your kind of Lagos day.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f6e9d8",
+  "theme_color": "#f3dfca",
+  "icons": [
+    {"src": "/assets/mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
