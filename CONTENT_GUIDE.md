@@ -54,3 +54,7 @@ The experience should feel open-ended, but the interface must remain honest abou
 - Every content item should lead to at least one relevant next step when possible.
 - Use editorial labels such as “A place to start”, “A small neighbourhood note” or “Try this kind of afternoon” instead of implying real-time activity.
 - Timely content must show a date or freshness context and link to a source.
+
+
+## Map art and interface constraints
+The illustrated city should feel lived in and locally grounded. Use researched architecture, street life, plants, transport, signage and neighbourhood detail. Keep geography consistent and separate decorative scene objects from interactive features. Do not use emojis or primitive-shape placeholders to represent places. Map selection opens a contextual bottom sheet without leaving the map. The map itself must be unobstructed until a place is selected.
