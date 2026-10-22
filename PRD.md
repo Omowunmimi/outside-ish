@@ -571,3 +571,14 @@ Do not collect precise location, names or sensitive personal details by default.
 - Search, detail, save, visit, planner and navigation flows continue to work after the styling changes.
 - Automated browser checks cover narrow mobile, standard mobile and desktop widths.
 - Any remaining limitations are documented honestly.
+
+
+## Visual and navigation acceptance criteria
+
+- The UI uses a flat editorial system. No drop shadows, offset shadows, elevated buttons, heavy outlines, generic dashboards or repetitive identical cards.
+- No emoji are used as interface decoration or as a substitute for authored illustration.
+- The city map is the leading discovery surface and uses layered, varied, locally grounded illustration rather than primitive-shape diagrams.
+- Main navigation remains visible and usable while the map is open on mobile and desktop.
+- Search and filters remain available above the map. No discovery tray or place panel is shown by default.
+- Selecting a pin opens an in-place bottom sheet. Closing it preserves the map state and location. Navigation remains accessible even while the sheet is open.
+- Controls provide clear touch targets and visible keyboard focus without shadows or raised styling.
