@@ -147,3 +147,8 @@ When `prefers-reduced-motion: reduce` is enabled:
 - Avoid large blur filters or expensive continuous effects on low-powered phones.
 - All essential information and interaction must remain available when animation is disabled.
 - Do not flash, pulse or loop attention-grabbing effects indefinitely.
+
+
+## Motion direction update
+
+Motion should make the city feel quietly alive without turning the interface into a toy. Keep controls flat at rest and during interaction: no lift, shadow growth, or pseudo-3D press effect. Use a quick colour change or subtle opacity shift for button feedback. Map pans and zooms should feel continuous and user-directed. Pins may have a very restrained staggered arrival when the map first opens, but avoid constant bobbing that makes place selection difficult. The place sheet enters from below with a short, calm transition; closing it should reveal the exact map position beneath it. Future optional sound must be user-controlled, off by default, respectful of device settings, and never required to understand map feedback. Honor prefers-reduced-motion.
