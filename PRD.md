@@ -153,19 +153,18 @@ Supporting destinations:
 - A user can enter Explore or the planner from the home screen.
 
 ### 8.2 Explore map
-- Map fills the available viewport and remains usable with one hand on mobile.
-- Pan via pointer/touch drag; zoom via pinch/wheel and explicit +/- controls; provide recenter/reset.
-- Place pins are individually tappable and keyboard-focusable where feasible.
-- Selected place is visually distinct and opens a preview sheet/tray.
-- Map tray can expand/collapse and list places in the current curated area.
-- Search and category filters update visible map content and list content together.
-- Selecting a list result highlights/centres the corresponding pin.
-- Neighbourhood labels, roads, landmarks, water and illustrated details provide orientation.
-- Respect safe areas, reduced-motion settings and touch target sizing.
-- Current map is editorial/illustrative, not a claim of exact cartography. Do not imply GPS, routing or traffic features unless implemented and disclosed.
-- Map content should progressively reveal more places as users browse/zoom or request more, not present only three fixed points.
-- If true geographic positioning is added later, map geometry and place coordinates must come from a trustworthy source.
-
+- The map is the leading surface. On entry it shows the city itself with search, filters and essential map controls only.
+- No persistent place tray, introductory map title, location badge or decorative sticker annotations.
+- Use a geographically grounded map composition with rich, layered illustration: varied architecture, streets, storefronts, signage, plants, transport, people and neighbourhood details.
+- Pan with touch/pointer drag, zoom with pinch/wheel and explicit controls, and provide recenter.
+- Pins and map features stay at stable map-space positions.
+- Selecting a place opens a contextual bottom sheet while remaining on the map. It must not navigate to the full detail screen.
+- The sheet is hidden on initial map load, shows the selected place and useful factual/source caveats, and closes without resetting map position or zoom.
+- Selecting another pin updates the existing sheet in place.
+- Search submitted from the map opens the matching place in the same sheet. Search from the feed may still open the full place page.
+- Filters update marker visibility and selected state without turning into a permanent drawer.
+- Map geometry is illustrative until a reliable geographic data source is connected. Never imply exact distances, GPS, live traffic or route guidance unless implemented and supported.
+- No emoji placeholders or primitive-shape city art.
 ### 8.3 Search and discovery
 - Search is available from home and map.
 - Support clear query, loading, no-results and error states.
@@ -220,26 +219,28 @@ Supporting destinations:
 ## 9. Visual direction
 
 ### Desired character
-An illustrated editorial field guide to Lagos: playful, observant, tactile, colourful and locally specific. It should feel art-directed, not like a generic dashboard assembled from rounded cards.
+An immersive, richly illustrated and geographically grounded city, expressed through a contemporary editorial interface. The city is the main character, not a background behind generic app cards.
 
 ### Visual principles
-- Use an intentional palette with strong contrast, ink-like outlines, paper textures and occasional bright accents.
-- Use varied compositions: editorial panels, map fragments, labels, hand-drawn annotations, stacked paper, large illustrations and asymmetric layouts.
-- Avoid excessive beige surfaces, repeated pill shapes, repetitive equal-sized cards, excessive borders and neumorphism.
-- Avoid house icons made from generic triangle/rectangle combinations as the primary illustration language.
-- Illustrations should contain intentional architecture, storefront signs, windows, balconies, awnings, street furniture, foliage, people, vehicles and foreground/background layers.
-- Use a consistent illustration system and custom SVG or authored artwork where practical.
-- Typography should combine a legible UI sans with a characterful editorial display face; avoid tiny all-caps labels as the main hierarchy.
-- Microcopy can be warm and witty with Nigerian context, but must remain clear and not force slang into every line.
-
+- Illustrate architecture, storefronts, streets, plants, public space, transport and everyday city life with authored detail, varied silhouettes, foreground/midground/background and consistent perspective.
+- Avoid primitive-shape scenes, emoji placeholders, neumorphism, neubrutalism, heavy outlines around every control, offset-shadow buttons, pervasive floating controls, generic dashboards and repeated identical cards.
+- Use varied editorial compositions for feed content.
+- Keep map search and filters quiet, compact and readable.
+- The map opens unobstructed. No persistent place sheet or introductory map label.
+- Use expressive display typography and readable UI text; avoid tiny all-caps labels as the main hierarchy.
+- No emojis in app UI or illustration.
+- Mobile is primary; desktop remains intentional and should encourage phone use for the fullest map experience.
 ## 10. Motion and interaction principles
-- Motion communicates cause and effect: pins respond to selection, sheets settle into place, map movement follows the hand, and new content enters without disorienting the user.
-- Use restrained easing and spring-like transitions; avoid perpetual animation that distracts.
-- Provide pressed, focused, selected, loading, success, empty and error states.
-- Respect `prefers-reduced-motion`.
-- Do not make essential information available only through animation.
-- Full motion specification lives in [MOTION.md](MOTION.md).
-
+- Map drag follows the hand directly; do not animate against pointer movement.
+- Use short, purposeful transitions for zoom, recenter, selection and sheet motion.
+- Pins do not bounce continuously.
+- Selecting a map pin opens a bottom sheet in place. Dismissing it preserves map position and zoom.
+- Selecting another pin updates the open sheet without screen navigation.
+- Provide pressed, selected, focus, loading, success, empty and error states.
+- Respect `prefers-reduced-motion`; never convey essential information only through motion.
+- Environmental motion may be added sparingly to non-interactive artwork after performance and accessibility testing.
+- Sound is a future, opt-in enhancement only. No autoplay; default off; explicit mute control; no essential information delivered only through sound.
+- Full specification lives in [MOTION.md](MOTION.md).
 ## 11. Content model
 
 ### Place
@@ -354,6 +355,9 @@ Metrics should be added only with an appropriate privacy-respecting analytics ap
 - [ ] There are clear ways to keep discovering after opening a place or finishing a plan.
 - [ ] Feed and map are not limited to three fixed discovery items as a product pattern.
 - [ ] Map and place information clearly distinguish editorial art from geographic precision.
+- [ ] Map opens without a permanent place tray or map-title badge.
+- [ ] Pin tap opens an in-place bottom sheet; close preserves map pan and zoom.
+- [ ] No emoji placeholder art; no continuous pin bobbing; no autoplay sound.
 - [ ] Desktop either works as a coherent app or has a deliberate mobile-first interstitial.
 - [ ] No accidental horizontal overflow at common mobile widths.
 - [ ] All controls have usable focus, selected and pressed states.
