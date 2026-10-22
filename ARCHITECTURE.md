@@ -1,0 +1,73 @@
+# Outsideish Technical Architecture
+
+## Current implementation
+Outsideish is currently a static, client-rendered PWA built with HTML, CSS and vanilla JavaScript. It is hosted by the existing Vercel project and sourced from the `rebuild/outsideish-v1` branch in the `Omowunmimi/outside-ish` repository.
+
+Core files:
+- `index.html`: screen structure, illustrated SVG map and navigation.
+- `styles.css`: visual tokens, component styles, responsive layouts and motion.
+- `app.js`: local content, UI state, search, planning, save/visit behaviour and event handlers.
+- `manifest.webmanifest`: install metadata.
+- `sw.js`: app-shell caching and offline fallback.
+- `assets/`: icon and other static artwork.
+
+## Runtime model
+- Screens are toggled in the client using a single page shell.
+- Place and adventure content is currently bundled in JavaScript.
+- Saves, visits and optional name are stored in localStorage with an Outsideish namespace.
+- The service worker caches the shell for repeat/offline entry.
+- The map is authored SVG and should be treated as an illustrated discovery surface, not a geographically accurate routing engine.
+- There is no backend, authentication, live place API, event feed, traffic service or route provider wired in the current prototype.
+
+## State boundaries
+### Persistent local state
+- saved items
+- visited place log
+- optional display name
+
+### Ephemeral state
+- current screen and previous screen
+- selected place or adventure
+- mood, interests, time, budget and area preferences
+- search query and current map filters
+- map pan and zoom transform
+
+Persistent state should be versioned or migrated if the content schema changes. Never persist sensitive information unnecessarily.
+
+## Recommended future modules
+1. **Content repository:** structured place, collection, neighbourhood and adventure data, separate from rendering.
+2. **Source/freshness metadata:** source URL, source type, checked date and confidence for factual details.
+3. **Discovery engine:** deterministic relevance ranking based on user constraints, location/area and content tags; avoid purely random output.
+4. **Map adapter:** separates map interactions from data source and visual map renderer. Can support the illustrated map now and a coordinate-aware provider later.
+5. **Local storage service:** centralises versioned saves, visited entries and preferences.
+6. **Analytics adapter:** optional privacy-conscious events with no unnecessary personal data.
+7. **Error/empty-state utilities:** consistent handling for unavailable content, offline state and no search matches.
+
+## Map interaction model
+Map view state should contain:
+- translation x/y
+- scale
+- selected place ID
+- active category filter
+- tray expanded/collapsed state
+
+Input events should use Pointer Events where possible so touch and mouse share one implementation. A movement threshold differentiates dragging from clicking. Zoom is clamped. Translation bounds prevent the city illustration from disappearing from the viewport. Map controls remain fixed outside the transformed SVG group. Pins are semantic interactive targets, not merely decorative SVG.
+
+## Data trust boundaries
+Content currently bundled into JavaScript is a prototype seed dataset. It must not be represented as a live or complete directory. Opening hours and prices require source and review metadata. Map illustration geometry is not a source of real distance or travel time. Future integrations should be evaluated for coverage, licensing, update cadence, privacy and cost before implementation.
+
+## PWA/offline notes
+- Update the service worker cache version whenever shell assets change.
+- Cache the core shell and local assets.
+- External fonts or remote sources may not be available offline.
+- Do not cache dynamic responses indefinitely without freshness rules.
+- Clearly distinguish locally available saved content from information that requires a connection.
+
+## Quality gates
+Before merging:
+- Parse/check JavaScript syntax.
+- Validate manifest JSON.
+- Exercise primary flows: home → plan → detail; home → map → pin → detail; save → saved; search → detail; visit → journal.
+- Test at 360, 390, 768, 1024 and 1440px widths.
+- Check horizontal overflow, keyboard focus, reduced motion, touch target sizes and console errors.
+- Verify the preview deployment points to the intended branch and commit.
