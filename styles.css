@@ -510,3 +510,106 @@ body.map-open .full-map{width:100%;height:100%;inset:0;transform-origin:center;t
 .nav-log:before{content:"";position:absolute;inset:2px 3px;border:1.5px solid currentColor;border-radius:2px}
 .nav-log:after{content:"";position:absolute;left:6px;right:6px;top:7px;height:1px;background:currentColor;box-shadow:0 4px currentColor,0 8px currentColor}
 .profile-row-mark{display:inline-block;width:18px;height:18px;border:1.5px solid currentColor;border-radius:50%;position:relative}
+
+
+
+/* OUTSIDEISH REDESIGN 02: flat editorial interface, illustrated city first. */
+:root{--ink:#263b38;--plum:#3f6658;--coral:#d65f49;--yellow:#efc75e;--paper:#f6f0df;--cream:#f6f0df;--line:#d7d2bf;--muted:#68746a;--nav-h:66px;--round:0px}
+html,body{background:#f6f0df;color:#263b38}
+button,.primary,.secondary,.text-button,.mood,.city-switch,.profile-dot,.search-field,.discovery-card,.nav-item,.map-search,.map-filter,.map-zoom button,.map-sheet-actions button,.map-sheet-actions a,.map-sheet-related button,.modal-option,.profile-row,.saved-item,.detail-fact,.adventure-card,.detail-hero,.empty-state,.stop-row button,.back,.round,.skip,.keep-wandering{box-shadow:none!important;filter:none}
+button{border-radius:0!important}
+.primary,.secondary,.search-field button,.map-search button,.map-filter,.map-zoom button,.map-sheet-actions button,.map-sheet-actions a,.map-sheet-related button,.keep-wandering,.empty-state button,.adventure-card-actions button,.modal-option,.profile-row,.saved-item,.detail-fact,.back,.round,.city-switch,.profile-dot{border-radius:0!important;box-shadow:none!important}
+.primary{background:#d65f49!important;color:#fff8e8!important;border:0!important;padding:14px 18px!important;font-weight:700;letter-spacing:.01em}
+.primary:hover{background:#b94e3d!important}
+.secondary{border:1px solid #263b38!important;background:transparent!important;color:#263b38!important}
+.text-button{color:#3f6658!important;border-bottom:1px solid currentColor!important;padding-bottom:4px!important}
+.topbar{background:#f6f0df!important;border:0!important;border-bottom:1px solid #d7d2bf!important;box-shadow:none!important}
+.wordmark>span:first-child{background:#d65f49!important;border:0!important;border-radius:0!important;transform:none!important}
+.city-switch{background:transparent!important;border:0!important;border-bottom:1px solid #263b38!important;padding:8px 0!important}
+.profile-dot{background:#efc75e!important;border:0!important}
+.arrival-scene{border:0!important;border-radius:0!important;box-shadow:none!important;background:#e6b7a1!important}
+.arrival-scene:before{border:0!important;box-shadow:none!important}
+.hand-note{border:0!important;border-radius:0!important;box-shadow:none!important}
+.search-field{background:#fff9ed!important;border:0!important;border-bottom:1px solid #263b38!important;border-radius:0!important;margin-left:0!important;margin-right:0!important}
+.search-field button{background:#d65f49!important;color:white!important}
+.mood{border:0!important;border-bottom:1px solid #c7c3b2!important;background:transparent!important;padding:10px 8px!important}
+.mood.selected{background:transparent!important;border-bottom:3px solid #d65f49!important;color:#263b38!important}
+.time-budget>button{background:transparent!important;border:0!important;border-bottom:1px solid #d7d2bf!important;border-radius:0!important}
+.time-budget .mini-icon{border-radius:0!important;background:#c6d6c0!important}
+.discovery-card{background:transparent!important;border:0!important;border-radius:0!important;border-bottom:1px solid #d7d2bf!important;text-align:left!important}
+.discovery-art{border-radius:0!important}
+.discovery-copy{padding:12px 0 16px!important}
+.discovery-copy h3{font-size:16px!important;letter-spacing:-.4px}
+.discovery-copy p{font-size:11px!important}
+.keep-wandering{background:transparent!important;border:0!important;border-top:1px solid #263b38!important;border-bottom:1px solid #263b38!important;color:#263b38!important;border-radius:0!important}
+.bottom-nav{background:#f6f0df!important;border-top:1px solid #c9c5b5!important;box-shadow:none!important;gap:0!important}
+.nav-item{border:0!important;border-radius:0!important;background:transparent!important;color:#748078!important}
+.nav-item.active{background:transparent!important;color:#263b38!important;border:0!important}
+.nav-item.active:after{content:"";position:absolute;bottom:1px;left:26%;right:26%;height:3px;background:#d65f49}
+.nav-item>span{transform:none!important}
+.nav-middle>span{width:auto!important;height:auto!important;background:transparent!important;color:inherit!important;border:0!important;border-radius:0!important;font-size:22px!important}
+.nav-middle.active>span{background:transparent!important;color:inherit!important}
+.planner-screen,.adventures-screen,.detail-screen,.saved-screen,.journal-screen,.profile-screen{background:#f6f0df}
+.pills span,.mood-cards label,.adventure-card,.detail-hero,.detail-fact,.saved-item,.saved-item .saved-art,.profile-cover,.profile-row,.journal-cover,.stop-num,.empty-state,.modal-sheet,.modal-option,.modal-x,.saved-tabs button,.profile-row>span{border-radius:0!important;box-shadow:none!important}
+.pills span{background:transparent!important;border:0!important;border-bottom:1px solid #c7c3b2!important}
+.pills input:checked+span{background:#dfe6d4!important;border-bottom:2px solid #3f6658!important}
+.mood-cards label,.adventure-card,.saved-item,.profile-row,.detail-fact{background:transparent!important;border:0!important;border-bottom:1px solid #d7d2bf!important}
+.adventure-card-top{border-radius:0!important}
+.adventure-card-actions button{border:0!important;border-radius:0!important;background:#d65f49!important;color:#fff8e8!important}
+.adventure-card-actions button:last-child{background:transparent!important;color:#263b38!important;border-left:1px solid #d7d2bf!important}
+.detail-hero{border:0!important}
+.detail-fact{padding:12px 0!important}
+.stop-num{border:0!important;background:#efc75e!important}
+.saved-tabs button{border:0!important;border-bottom:1px solid #d7d2bf!important;background:transparent!important}
+.saved-tabs button.active{border-bottom:3px solid #d65f49!important;background:transparent!important}
+.empty-state{background:#e6e5d5!important;border:0!important;border-top:1px solid #3f6658!important;border-bottom:1px solid #3f6658!important}
+.empty-state button{background:#d65f49!important;color:white!important;border:0!important}
+.modal-sheet{background:#f6f0df!important;border:0!important;border-top:1px solid #263b38!important;border-radius:0!important}
+.modal-x{background:transparent!important;border:0!important}
+.toast{background:#263b38!important;border-radius:0!important;box-shadow:none!important}
+.map-top{left:14px!important;right:14px!important;gap:0!important;max-width:680px!important}
+.map-search{background:#f8f2e4!important;border:0!important;border-bottom:2px solid #263b38!important;border-radius:0!important;box-shadow:none!important;padding:0 12px!important;min-height:49px!important}
+.map-search>span{font-size:23px!important;color:#3f6658!important}
+.map-search input{font-size:14px!important}
+.map-search button{background:#d65f49!important;color:#fff8e8!important;border-radius:0!important;padding:10px 13px!important}
+.map-filter{height:49px!important;width:49px!important;flex-basis:49px!important;margin-left:8px!important;background:#efc75e!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+.map-filter[aria-expanded=true]{background:#3f6658!important;color:#fff8e8!important}
+.map-zoom{right:14px!important;top:calc(78px + env(safe-area-inset-top))!important;gap:0!important;padding:0!important;background:#f8f2e4!important;border-radius:0!important;box-shadow:none!important;border-top:1px solid #bcb9a7!important;border-bottom:1px solid #bcb9a7!important}
+.map-zoom button{width:40px!important;height:40px!important;border:0!important;border-radius:0!important;background:transparent!important;color:#263b38!important}
+.map-zoom button+button{border-top:1px solid #d7d2bf!important}
+.map-zoom button:active,.map-filter:active{transform:none!important;background:#dfe6d4!important}
+.map-place-sheet{background:#f6f0df!important;color:#263b38!important;border-radius:0!important;box-shadow:none!important;border-top:3px solid #d65f49!important;padding:8px 20px calc(20px + env(safe-area-inset-bottom))!important}
+.map-sheet-grip span{background:#c6c4b5!important;border-radius:0!important}
+.map-sheet-close{background:transparent!important;border:0!important;border-left:1px solid #d7d2bf!important;border-radius:0!important;color:#263b38!important}
+.map-sheet-title{font-family:"DM Sans",system-ui,sans-serif!important;font-weight:800!important;letter-spacing:-1px!important;color:#263b38!important}
+.map-sheet-intro{color:#59665c!important}
+.map-sheet-facts{border-top:1px solid #c9c5b5!important;border-bottom:1px solid #c9c5b5!important}
+.map-sheet-actions button,.map-sheet-actions a{border:0!important;border-radius:0!important;background:#d65f49!important;color:#fff8e8!important}
+.map-sheet-actions .quiet,.map-sheet-related button{background:#e2e5d5!important;color:#263b38!important}
+.map-sheet-related button{border-bottom:1px solid #9cae99!important}
+.sr-only{position:absolute!important}
+/* The map has a permanent exit route: navigation sits above its lower edge. */
+body.map-open,body.map-open .app{height:100dvh!important;min-height:100dvh!important;padding:0!important;overflow:hidden!important;background:#eee4cb!important}
+body.map-open .topbar{display:none!important}
+body.map-open .bottom-nav{display:grid!important;position:fixed!important;left:0!important;right:0!important;top:auto!important;bottom:0!important;width:100%!important;height:calc(66px + env(safe-area-inset-bottom))!important;padding:5px 6px calc(5px + env(safe-area-inset-bottom))!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;flex-direction:row!important;justify-content:initial!important;z-index:50!important;border-top:1px solid #c9c5b5!important;border-right:0!important;background:#f6f0df!important}
+body.map-open .bottom-nav .nav-item{width:auto!important;height:53px!important;min-width:0!important;margin:0!important}
+body.map-open .bottom-nav .nav-item small{font-size:10px!important}
+body.map-open .explore-screen{position:fixed!important;inset:0 0 calc(66px + env(safe-area-inset-bottom)) 0!important;z-index:25!important;width:100%!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#eee4cb!important}
+body.map-open .explore-screen .map-area{height:100%!important;min-height:0!important}
+body.map-open .full-map{height:100%!important;width:100%!important;inset:0!important;touch-action:none!important}
+body.map-open .map-place-sheet{bottom:0!important;max-height:calc(100% - 80px)!important;padding-bottom:18px!important}
+@media(min-width:720px){
+ body.map-open .bottom-nav{top:auto!important;bottom:0!important;left:0!important;right:0!important;width:100%!important;height:66px!important;padding:4px 10px!important;display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;flex-direction:row!important;border-right:0!important;border-top:1px solid #c9c5b5!important}
+ body.map-open .bottom-nav .nav-item{width:auto!important;height:55px!important}
+ body.map-open .explore-screen{inset:0 0 66px 0!important;height:auto!important}
+ body.map-open .map-top{top:20px!important;left:22px!important;right:auto!important;width:min(650px,calc(100vw - 44px))!important}
+ body.map-open .map-zoom{right:22px!important;top:84px!important}
+ .map-place-sheet{left:auto!important;right:18px!important;bottom:16px!important;width:min(440px,calc(100vw - 36px))!important;max-height:70%!important}
+}
+@media(max-width:430px){
+ body.map-open .map-top{left:12px!important;right:12px!important;top:calc(12px + env(safe-area-inset-top))!important}
+ body.map-open .map-zoom{right:12px!important;top:calc(72px + env(safe-area-inset-top))!important}
+ .map-place-sheet{max-height:75%!important;padding-left:17px!important;padding-right:17px!important}
+ .discovery-list{gap:18px 12px!important}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
