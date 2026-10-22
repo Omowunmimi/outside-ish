@@ -479,8 +479,15 @@ body.map-open .full-map{width:100%;height:100%;inset:0;transform-origin:center;t
 @media(max-width:430px){.map-top{left:10px;right:10px;gap:8px}.map-search{min-height:46px;padding:0 10px}.map-search input{font-size:13px}.map-filter{width:46px;height:46px;flex-basis:46px}.map-zoom{right:10px;top:calc(68px + env(safe-area-inset-top))}.map-zoom button{width:36px;height:36px}.map-place-sheet{padding-left:17px;padding-right:17px;max-height:72dvh}}
 @media(prefers-reduced-motion:reduce){.map-place-sheet{animation:none}.map-pin{transition:none}}
 /* Discovery illustration placeholders use composed CSS scenes, never emoji glyphs. */
-.art-sticker,.art-squiggle,.adventure-illustration{display:none!important}
+.art-sticker,.art-squiggle{display:none!important}
 .art-scene{display:block;position:absolute;inset:0;overflow:hidden;background:linear-gradient(145deg,#d7d5b9,#a5b7a0 58%,#7c9b80)}
 .art-scene:before{content:"";position:absolute;left:-10%;right:-5%;bottom:18%;height:34%;background:#d8c5a2;transform:skewY(-8deg);border-top:1px solid rgba(52,53,47,.18)}
 .art-scene:after{content:"";position:absolute;left:18%;bottom:16%;width:31%;height:42%;background:linear-gradient(90deg,#b96b4c 0 12%,#e9d9b9 12% 80%,#b96b4c 80%);clip-path:polygon(0 15%,50% 0,100% 15%,100% 100%,0 100%)}
 .art-scene-pink{background:linear-gradient(135deg,#d9b4bb,#b7c2a4)}.art-scene-yellow{background:linear-gradient(135deg,#e8ce82,#a7b79b)}.art-scene-lilac{background:linear-gradient(135deg,#c9bddb,#a6bba5)}.art-scene-coral{background:linear-gradient(135deg,#df9b7c,#8eae9b)}.art-scene-green,.art-scene-mint{background:linear-gradient(135deg,#9ab394,#c9d2aa)}
+
+/* Use authored city illustration instead of emoji or primitive placeholder shapes. */
+.art-scene{background:#c9c9ad url('/assets/lagos-street-illustration.svg') center/cover no-repeat}
+.art-scene:before,.art-scene:after{display:none!important;content:none!important}
+.saved-art,.detail-doodle,.adventure-illustration{position:relative;overflow:hidden}
+.saved-art .art-scene,.detail-doodle .art-scene,.adventure-illustration .art-scene{position:absolute;inset:0}
+.map-pin path:first-of-type{stroke-width:1.5}
