@@ -176,3 +176,16 @@ A component is not approved because it is colourful. It must also have:
 
 ### Responsive platform decision
 The product remains mobile-first but is not intentionally mobile-only. Desktop must have its own composition. If future research demonstrates that the map experience is substantially worse on desktop, a mobile-first notice can be tested as a product decision, not used as a substitute for responsive design.
+
+
+## Visual direction update: flat editorial city world
+
+The earlier bordered, offset-shadow, rounded-card treatment is rejected and must not return. Outsideish uses a flat, editorial visual language: warm paper ground, deep botanical green ink, vermilion accents, muted yellow and sage, strong typography, asymmetrical composition and generous open space. Controls are flat and quiet. Do not use drop shadows, offset shadows, elevated/floating buttons, heavy outlines, repeated dashboard cards, or pill controls as the default. Use thin rules, colour fields, type scale, illustration and spacing to establish hierarchy. Use varied editorial layouts rather than repeating identical tiles. No emoji as UI decoration or substitute illustration.
+
+### City illustration
+
+The map is an authored illustrated city environment, not a schematic diagram. Buildings should have varied silhouettes, layered facades, windows, balconies, signs, awnings, doorways and small street-level details. Roads should meander through coherent neighbourhood blocks. Include locally grounded street life, transport, trees, shopfronts and waterfront details. The artwork must feel composed and inhabited, not assembled from primitive rectangles and triangles. Pins sit within this world and remain legible without dominating it.
+
+### Navigation and controls
+
+The main navigation remains available while exploring the map. On mobile it sits above the bottom safe area and must never be hidden by the map view. Search and filter are flat, square-cornered controls. Place details appear in a contextual bottom sheet only after selecting a pin or place; dismissing it returns to the map.
