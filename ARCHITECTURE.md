@@ -1,110 +1,38 @@
 # Outsideish Technical Architecture
 
-## Current implementation
-Outsideish is currently a static, client-rendered PWA built with HTML, CSS and vanilla JavaScript. It is hosted by the existing Vercel project `outside-ish` and lives in the `Omowunmimi/outside-ish` repository. The redesign was merged to `main` and the production deployment was explicitly built from that main-branch commit. Check Vercel Production Branch tracking before future push-triggered releases; a preview URL is not proof of a production release.
+**Status:** Current runtime notes and reset constraints. Documentation is not proof that a feature currently works.
 
-Core files:
-- `index.html`: screen structure, illustrated SVG map and navigation.
-- `styles.css`: visual tokens, component styles, responsive layouts and motion.
-- `app.js`: local content, UI state, search, planning, save/visit behaviour and event handlers.
-- `manifest.webmanifest`: install metadata.
-- `sw.js`: app-shell caching and offline fallback.
-- `assets/`: icon and other static artwork.
+## Runtime
+Outsideish is a static client-rendered PWA using HTML, CSS and vanilla JavaScript in the Omowunmimi/outside-ish repository. The current UI has reported visual and interaction defects; the documents describe target behaviour, not verified completion.
 
-## Runtime model
-- Screens are toggled in the client using a single page shell.
-- Place and adventure content is currently bundled in JavaScript.
-- Saves, visits and optional name are stored in localStorage with an Outsideish namespace.
-- The service worker caches the shell for repeat/offline entry.
-- The map is authored SVG and should be treated as an illustrated discovery surface, not a geographically accurate routing engine.
-- There is no backend, authentication, live place API, event feed, traffic service or route provider wired in the current prototype.
+Expected core files:
+- index.html: screen structure, map SVG, navigation and desktop hand-off.
+- redesign.css: replacement stylesheet intended to be loaded by the HTML entry point; verify the actual link.
+- styles.css: legacy stylesheet may remain; do not re-enable without auditing conflicts.
+- app.js: local content, navigation, search, planning, save/visit and map interactions.
+- manifest.webmanifest: install metadata.
+- sw.js: app-shell cache and offline fallback.
+- assets/: icons and illustrations.
 
-## State boundaries
-### Persistent local state
-- saved items
-- visited place log
-- optional display name
+## Data and state boundaries
+Content is locally bundled unless an integration is explicitly implemented. Local storage may contain saved places/plans and visit history. Ephemeral state includes current screen, search, filters, planner selections, selected place, sheet visibility and map transform. Use stable IDs and handle malformed/old local storage without crashing.
 
-### Ephemeral state
-- current screen and previous screen
-- selected place or adventure
-- mood, interests, time, budget and area preferences
-- search query and current map filters
-- map pan and zoom transform
+A place record should support stable ID, name, category, neighbourhood, description, tags, source URL/type, last-checked date, estimate flags and related items where known. Never invent missing facts to fill a layout.
 
-Persistent state should be versioned or migrated if the content schema changes. Never persist sensitive information unnecessarily.
+## Design system and icons
+CSS custom properties are the source of truth for colour, spacing, typography, radii, controls and motion. Repeated components share rules and documented variants. Use the central custom SVG icon family defined in ICON_SYSTEM.md. Remove or isolate legacy styles instead of allowing two competing systems to style the same component. No emoji or arbitrary Unicode fallback icons.
 
-## Recommended future modules
-1. **Content repository:** structured place, collection, neighbourhood and adventure data, separate from rendering.
-2. **Source/freshness metadata:** source URL, source type, checked date and confidence for factual details.
-3. **Discovery engine:** deterministic relevance ranking based on user constraints, location/area and content tags; avoid purely random output.
-4. **Map adapter:** separates map interactions from data source and visual map renderer. Can support the illustrated map now and a coordinate-aware provider later.
-5. **Local storage service:** centralises versioned saves, visited entries and preferences.
-6. **Analytics adapter:** optional privacy-conscious events with no unnecessary personal data.
-7. **Error/empty-state utilities:** consistent handling for unavailable content, offline state and no search matches.
+## Navigation contract
+Primary destinations have stable IDs and one navigation/state contract. Bottom navigation stays visible on all mobile screens, including Explore. Navigating away closes the place sheet without corrupting map state. Returning to Explore preserves map context where practical.
 
-## Map interaction model
-Map view state includes translation x/y, scale, active category filter, selected place ID and sheet visibility. Map transform and sheet state are separate.
+## Map contract
+Keep map-world transform separate from fixed controls and sheet state. Pointer Events plus a drag threshold distinguish movement from pin taps. Markers use stable place IDs; decorative scenery is not interactive. Selecting a marker opens the contextual sheet. Dismissal preserves pan, zoom and filters. Illustration coordinates do not support real distance, directions or geographic precision.
 
-1. Enter Explore and render the map without a tray or title overlay.
-2. Pan/zoom/search/filter while remaining on the map.
-3. Selecting a place sets selected place ID and opens the contextual sheet.
-4. The sheet renders the same place record used by feed/search.
-5. Selecting another place updates the sheet in place.
-6. Dismissal clears selection and sheet visibility but preserves pan, zoom and filters.
-7. Save/source/visit actions operate on the selected place without forcing full-page navigation.
+## Error and empty states
+Handle no search results, missing details, empty Saved/Journal, unsupported share, invalid storage, offline shell and unavailable source links. Empty states need a concise explanation and one relevant next action. Do not add artificial spinners to synchronous local actions.
 
-Pointer Events should support mouse and touch. A movement threshold differentiates dragging from clicking. Bounds prevent the map disappearing entirely. Controls remain fixed outside the transformed SVG world. Decorative features are not interactive destinations. Map geometry is not exact lat/long until a real geographic source is integrated.
+## PWA and privacy
+Increment the service-worker cache version when shell assets change. Verify fresh and repeat loads to avoid stale HTML/CSS combinations. A cached shell does not make venue facts current. Browsing should not require an account. Keep local storage minimal and namespaced. Device-local saves do not sync or constitute a backup.
 
-## Data trust boundaries
-Content currently bundled into JavaScript is a prototype seed dataset. It must not be represented as a live or complete directory. Opening hours and prices require source and review metadata. Map illustration geometry is not a source of real distance or travel time. Future integrations should be evaluated for coverage, licensing, update cadence, privacy and cost before implementation.
-
-## PWA/offline notes
-- Update the service worker cache version whenever shell assets change.
-- Cache the core shell and local assets.
-- External fonts or remote sources may not be available offline.
-- Do not cache dynamic responses indefinitely without freshness rules.
-- Clearly distinguish locally available saved content from information that requires a connection.
-
-## Motion and future sound
-Keep map drag direct and sheet motion independent of the map transform. Respect reduced motion and avoid continuous marker animation. Future sound must be optional, default off, never autoplay and never carry essential information.
-
-## Quality gates
-Before merging:
-- Parse/check JavaScript syntax.
-- Validate manifest JSON.
-- Exercise primary flows: home → plan → detail; home → map → pin → bottom sheet → close; save → saved; search → detail; visit → journal.
-- Test at 360, 390, 768, 1024 and 1440px widths.
-- Check horizontal overflow, keyboard focus, reduced motion, touch target sizes and console errors.
-- Verify the preview deployment points to the intended branch and commit.
-## 9. Discovery feed evolution
-
-The current prototype bundles a small set of places and outings in app.js. The feed may append another mixed batch from that local set so browsing does not stop abruptly, but cycling a small set is not equivalent to having a genuinely large catalogue.
-
-Recommended evolution:
-- Extract content into structured data files or a content service.
-- Use stable IDs, categories, tags, source metadata, freshness timestamps and editorial status.
-- Implement cursor-based pagination and a loading/retry state.
-- Keep feed rendering independent from data retrieval.
-- Add ranking inputs for mood, time, budget, interests, area, diversity and editorial priority.
-- Preserve feed cursor and scroll position across detail navigation.
-- Add deduplication within a session and avoid immediate repeats when a new batch begins.
-- Introduce analytics through a privacy-conscious adapter only after defining the data policy.
-
-## 10. Map renderer boundaries
-
-The current SVG uses illustration-space coordinates. Those coordinates are only for artwork layout and marker placement. They must never be used for geographic distance, routing or live proximity calculations.
-
-Keep the following responsibilities separate:
-- **Map renderer:** draws the illustrated map and its interactive markers.
-- **Map interaction controller:** pan, zoom, recenter, marker selection and filters.
-- **Discovery content:** place details and editorial metadata.
-- **Future geographic adapter:** real coordinates, tile/provider attribution, geocoding and routing integration.
-
-When the product needs real navigation, prefer opening a trusted external maps destination or integrate a suitable provider only after evaluating terms, pricing, attribution, coverage and accessibility. Do not present illustrative paths as actual walking routes.
-
-## Mobile-first visual shell and map navigation
-
-`redesign.css` defines the full-reset presentation. Existing interaction IDs and data attributes are preserved so client-side state and local storage remain intact. The desktop hand-off sits outside the mobile app shell and activates at 760px.
-
-Explore is a fixed map canvas constrained above persistent mobile bottom navigation. All map artwork, pins and the extended southern illustration live inside `#map-world`, controlled by pan/zoom transforms. The place sheet is selection-triggered only; no persistent discovery tray is mounted. Navigation must never hide bottom navigation on Explore.
+## Release discipline
+Run syntax, responsive, accessibility and browser interaction checks before merging. Confirm the exact deployed commit and environment before calling a URL current. A preview is not production, and a merged commit is not proof of deployment. Report deployment blockers honestly.
