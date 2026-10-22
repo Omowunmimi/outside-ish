@@ -30,17 +30,20 @@ Protect the mobile-first discovery experience as the visual system, map and feed
 - Empty search gives an actionable prompt.
 
 ### Map
-- Map opens as the primary discovery surface.
-- Drag/pan works with mouse and touch.
-- A drag does not activate a marker accidentally.
-- Zoom-in, zoom-out and recenter work and stay within sensible bounds.
-- Desktop wheel zoom works only while the map is the active screen.
-- Markers are tappable and open the correct place.
-- Category filters update both the map and discovery list.
-- Search works from the map.
-- Controls remain fixed while map artwork moves.
-- Detail back returns to the map with the selected place and view preserved.
-- The interface does not claim the illustrated geometry is exact cartography or live navigation.
+- Map opens as the primary, unobstructed city surface.
+- Search, filters and essential controls are visible; no persistent tray, title badge or sticker annotations.
+- Pan/drag works with mouse and touch.
+- A drag does not activate a marker.
+- Zoom and recenter work and keep map features aligned.
+- Pins remain still when idle and have clear selected states.
+- Pin tap opens the place bottom sheet without changing the active screen.
+- The sheet is hidden on initial map load.
+- Selecting another pin updates the open sheet.
+- Closing the sheet preserves pan, zoom and filters.
+- Search from map opens a matching place in the sheet.
+- Filter updates markers and does not leave the filter panel open.
+- No emoji placeholder art or primitive-shape map scenes.
+- Map art does not claim exact cartography, GPS or live navigation.
 
 ### Place details
 - Name, category, neighbourhood, description and practical details render.
