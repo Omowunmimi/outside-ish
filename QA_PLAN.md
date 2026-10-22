@@ -102,3 +102,13 @@ Protect the mobile-first discovery experience as the visual system, map and feed
 
 ## Release gate
 A release is acceptable when the core journeys pass, there are no uncaught browser errors, no horizontal overflow at target widths, the map can be panned and zoomed, the feed does not dead-end, and remaining data limitations are visible and documented.
+
+## Full-reset release checks
+
+- At 360, 390, 430 and 759 CSS px, the mobile app is visible with no horizontal overflow.
+- At 760px and wider, the app shell is hidden and the phone hand-off page is visible.
+- Five-item bottom navigation remains visible on Home, Plan, Saved, Journal and Explore. Every item can leave the map.
+- Map opens with no sheet, discovery tray or decorative title. Search, filters and zoom remain available.
+- A pin opens the correct sheet without leaving Explore; closing it restores the map. Pan/zoom affect the extended illustration.
+- Controls are flat with no elevated-button shadows; no emoji are used as UI or illustration assets.
+- Planner, save/unsave, visit logging, sharing, filters, search, local storage, PWA caching and reduced motion continue to work.
