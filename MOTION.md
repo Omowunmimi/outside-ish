@@ -104,3 +104,42 @@ When `prefers-reduced-motion: reduce` is enabled:
 - [ ] Reduced motion is respected.
 - [ ] Keyboard users can reach and operate controls.
 - [ ] No long decorative animation competes with place content.
+## 9. Motion detail for the visual refresh
+
+### Screen transitions
+- Use a short opacity and 6–10px vertical shift for ordinary screen changes.
+- Preserve the previous screen's scroll position when opening a detail view.
+- Avoid animating every card individually on every render. If stagger is used, limit it to the first visible group and keep the total reveal brief.
+- Do not use animation to hide a layout jump or a slow response.
+
+### Feed continuation
+- Append new items below existing items without replacing the feed.
+- A newly appended batch may use a subtle 120–180ms opacity reveal.
+- Do not auto-scroll the visitor when new content appears.
+- If loading fails, retain existing items and expose a retry action.
+- Respect the reduced-motion media query and show new content immediately in reduced-motion mode.
+
+### Map marker behaviour
+- Marker selection should be immediately visible through shape, outline, scale or a selected label.
+- Avoid continuous bobbing on every marker. Reserve motion for a selected or newly discovered place, and stop decorative animation when the map is being dragged.
+- A marker tap should not trigger if the pointer has crossed the pan threshold.
+- If marker labels are introduced, avoid overlapping labels and provide a non-map list alternative.
+
+### Gesture feedback
+- During pan, remove the map's easing transition so the artwork follows the pointer directly.
+- On release, the map may settle only if the settling behaviour is intentional and does not make it feel slippery.
+- Zoom should be predictable and bounded. Keep controls anchored to the viewport.
+- Pinch-to-zoom should be implemented only with a tested pointer/touch gesture handler. If not supported, the explicit zoom controls must remain visible and usable.
+- Avoid blocking page scroll outside the map surface.
+
+### Press and selection feedback
+- Buttons respond immediately with a pressed state.
+- Save actions switch state immediately, then announce success through a polite status message.
+- Filter changes should update the visible result set without an unnecessary full-screen transition.
+- Focus indication must remain visible even when hover/pressed styling is active.
+
+### Performance and accessibility
+- Animate only transform and opacity where practical.
+- Avoid large blur filters or expensive continuous effects on low-powered phones.
+- All essential information and interaction must remain available when animation is disabled.
+- Do not flash, pulse or loop attention-grabbing effects indefinitely.
