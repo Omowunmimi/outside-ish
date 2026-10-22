@@ -43,3 +43,14 @@ Do not use “verified”, “open now”, “live”, “nearby” or “curren
 
 ## Recommendations
 Recommendations should explain why an item fits a mood, time budget or interest. Avoid random ordering as the main discovery mechanism. When there is not enough data for a perfect match, explain the trade-off and offer the closest useful alternative.
+## 8. Endless discovery without misleading the visitor
+
+The experience should feel open-ended, but the interface must remain honest about the size and freshness of the content library.
+
+- Feed continuation should preserve previously rendered items and add another batch.
+- When the local prototype dataset is exhausted, it may re-mix editorial items. Avoid immediate duplicates and avoid copy that claims a fresh set of places was found.
+- In production, replace local cycling with paginated content from the reviewed content library.
+- Vary the content format: places, collections, neighbourhood stories, outing plans and field notes.
+- Every content item should lead to at least one relevant next step when possible.
+- Use editorial labels such as “A place to start”, “A small neighbourhood note” or “Try this kind of afternoon” instead of implying real-time activity.
+- Timely content must show a date or freshness context and link to a source.
