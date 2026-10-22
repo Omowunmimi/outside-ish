@@ -10,14 +10,16 @@ Outsideish should feel like wandering through an illustrated city field guide, n
 
 - Mobile-first PWA shell.
 - Illustrated Lagos street scene and map.
-- Map pins for a starter set of eight places, with pan, zoom and recenter controls.
-- Search, category filters, place details and source links.
+- An illustrated Lagos map with pan, zoom, recenter and contextual place bottom sheets.
+- Search, category filters, place sheets and source links.
 - Mixed discovery feed with a “Keep wandering” continuation action.
 - Curated starter outings, a lightweight planner, saved places/plans and a visit journal.
 - Device-local saves; no account required.
-- The map is an editorial illustration, not exact cartography. Place information, opening details, prices and events should be checked before visiting. Live traffic, turn-by-turn routing and live event data are not connected.
+- The map is an authored illustration, not exact cartography. Place information, opening details, prices and events should be checked before visiting. Live traffic, turn-by-turn routing and live event data are not connected.
 
 The current place set is a starting collection, not a complete or live Lagos directory. New content should follow the source and freshness rules in [CONTENT_GUIDE.md](CONTENT_GUIDE.md).
+
+The map opens unobstructed with search and filters. Selecting a place opens a bottom sheet without leaving the map. No emoji placeholder art or autoplay sound is used. The starter dataset is not a live or exhaustive Lagos directory.
 
 ## Product and design documentation
 
