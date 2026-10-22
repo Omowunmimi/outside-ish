@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">A lived-in Lagos street</title><desc id="desc">A richly layered illustrated Lagos street with varied shopfronts, balconies, plants, pedestrians and a yellow danfo bus.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d5d6bc"/><stop offset="1" stop-color="#f0d9a7"/></linearGradient>
+ <linearGradient id="road" x2="0" y2="1"><stop stop-color="#b4a78d"/><stop offset="1" stop-color="#7f8774"/></linearGradient>
+ <pattern id="wall" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8L8 0" stroke="#8e8170" stroke-opacity=".16" stroke-width="1"/></pattern>
+ <g id="leaf"><path d="M0 0C-21-26-14-43 1-47C16-31 14-13 0 0Z" fill="#426b4b"/><path d="M0 0L1-39" stroke="#a6bb7e" stroke-width="1.5"/></g>
+ <g id="window"><rect width="31" height="42" rx="1" fill="#3d5149"/><rect x="4" y="4" width="23" height="34" fill="#b6c6b2"/><path d="M15 4V38M4 20H27" stroke="#f0d9ad" stroke-width="3"/><path d="M-3 0H34" stroke="#a95c42" stroke-width="4"/></g>
+ <g id="person"><ellipse cx="0" cy="34" rx="12" ry="3" fill="#555e4d" opacity=".18"/><circle cy="0" r="7" fill="#754b36"/><path d="M-7 8Q0 4 7 8L10 25L-9 25Z" fill="#c45f43"/><path d="M-5 24L-8 38M6 24L9 38" stroke="#4b4b3d" stroke-width="4" stroke-linecap="round"/><path d="M-6 10L-15 22M6 10L15 17" fill="none" stroke="#754b36" stroke-width="4" stroke-linecap="round"/></g>
+</defs>
+<rect width="900" height="520" fill="url(#sky)"/>
+<path d="M0 200L85 175L145 192L213 164L286 190L352 158L430 184L506 160L590 188L678 169L758 190L900 166V360H0Z" fill="#b3b59a"/>
+<path d="M0 243Q155 220 300 242T600 235T900 230V389H0Z" fill="#e4d0a8"/>
+<!-- far building silhouettes -->
+<g opacity=".9">
+ <path d="M-18 126L94 103L172 126V338H-18Z" fill="#c47b58"/><path d="M-18 126L94 103L172 126" fill="none" stroke="#8c563f" stroke-width="5"/>
+ <path d="M29 150H61V191H29ZM82 143H115V185H82ZM29 213H61V253H29ZM82 207H115V247H82Z" fill="#d9c39a" stroke="#9d6448" stroke-width="3"/>
+ <path d="M172 143L280 122L352 143V350H172Z" fill="#d5b995"/><path d="M172 143L280 122L352 143" fill="none" stroke="#986f51" stroke-width="5"/>
+ <path d="M190 164H221V201H190ZM240 157H270V197H240ZM292 165H324V202H292ZM190 221H221V260H190ZM240 216H270V255H240ZM292 224H324V263H292Z" fill="#718b7c" stroke="#8e7259" stroke-width="3"/>
+ <path d="M352 153L465 130L546 154V348H352Z" fill="#d98e69"/><path d="M352 153L465 130L546 154" fill="none" stroke="#925b44" stroke-width="5"/>
+ <path d="M374 177H408V214H374ZM425 169H459V207H425ZM477 179H511V217H477ZM374 234H408V270H374ZM425 227H459V265H425ZM477 236H511V274H477Z" fill="#e9d9b8" stroke="#a96b4c" stroke-width="3"/>
+</g>
+<!-- foreground shop row with varied roofs and facades -->
+<g>
+ <path d="M-10 278L125 248L236 272V431H-10Z" fill="#e2b879"/><path d="M-10 278L125 248L236 272L236 287L125 266L-10 295Z" fill="#9e6449"/>
+ <path d="M18 313H86V388H18Z" fill="#3c5148"/><path d="M24 320H80V382H24Z" fill="#b4c7b5"/><path d="M52 320V382M24 350H80" stroke="#f3d6a5" stroke-width="4"/>
+ <path d="M103 302H204V319H103Z" fill="#3f4e43"/><text x="153" y="314" fill="#f4e7c8" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="700" letter-spacing="1.3">MAMA TEE</text>
+ <path d="M105 330H203V422H105Z" fill="#b96e4e"/><path d="M114 339H195V417H114Z" fill="#f0d5a4"/><path d="M114 366H195" stroke="#b96e4e" stroke-width="5"/><path d="M132 340V417M176 340V417" stroke="#b96e4e" stroke-width="3"/>
+ <path d="M231 294L334 270L420 294V431H231Z" fill="#d0c3a2"/><path d="M231 294L334 270L420 294" fill="none" stroke="#6d7b62" stroke-width="6"/>
+ <path d="M248 315H281V354H248ZM299 305H332V347H299ZM351 315H385V354H351Z" fill="#7d9a87" stroke="#8a6a4e" stroke-width="3"/>
+ <path d="M244 367H406V382H244Z" fill="#c55e42"/><path d="M254 367V382M273 367V382M292 367V382M311 367V382M330 367V382M349 367V382M368 367V382M387 367V382" stroke="#f3d8a8" stroke-width="2"/>
+ <path d="M252 390H396V431H252Z" fill="#4b5b4a"/><path d="M263 397H306V431H263ZM315 397H358V431H315ZM367 397H385V431H367Z" fill="#d9bd8b"/><path d="M309 390V431M362 390V431" stroke="#f1d9ad" stroke-width="4"/>
+ <path d="M419 283L522 254L622 280V431H419Z" fill="#c5a6bd"/><path d="M419 283L522 254L622 280V294L522 270L419 300Z" fill="#8e6d83"/>
+ <use href="#window" x="440" y="310"/><use href="#window" x="490" y="300"/><use href="#window" x="540" y="310"/>
+ <path d="M432 363H609V378H432Z" fill="#3e5748"/><text x="520" y="374" fill="#f5e5bf" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="700" letter-spacing="2">BLOOM HOUSE</text>
+ <path d="M622 300L740 272L850 299V431H622Z" fill="#d9a16f"/><path d="M622 300L740 272L850 299V313L740 289L622 315Z" fill="#9e6048"/>
+ <path d="M643 327H683V369H643ZM699 319H739V362H699ZM755 327H795V369H755Z" fill="#8ca697" stroke="#9d684b" stroke-width="3"/>
+ <path d="M636 382H834V398H636Z" fill="#e8cc95"/><path d="M636 382V398M661 382V398M686 382V398M711 382V398M736 382V398M761 382V398M786 382V398M811 382V398" stroke="#a75e43" stroke-width="2"/>
+ <path d="M642 404H828V431H642Z" fill="#43594b"/><path d="M655 410H696V431H655ZM705 410H746V431H705ZM755 410H796V431H755Z" fill="#e5cda2"/>
+</g>
+<!-- balconies, wiring and street-level texture -->
+<g fill="none" stroke="#6f5e4d" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M181 178H330V188H181ZM191 188V205M215 188V205M239 188V205M263 188V205M287 188V205M311 188V205" stroke-width="3"/>
+ <path d="M365 199H524V208H365ZM377 208V225M405 208V225M433 208V225M461 208V225M489 208V225M517 208V225" stroke-width="3"/>
+ <path d="M0 92Q120 116 230 85T470 95T700 76T900 91" stroke="#605c4d" stroke-width="2" opacity=".65"/>
+ <path d="M45 87L80 113M255 85L280 122M505 95L520 132M722 78L740 109" stroke-width="1.5" opacity=".55"/>
+</g>
+<!-- roadside trees with varied canopy silhouettes -->
+<g>
+ <path d="M78 394L70 299M73 350L45 325M75 331L103 302" stroke="#6f533c" stroke-width="10" fill="none" stroke-linecap="round"/>
+ <path d="M32 310Q9 285 31 263Q21 234 49 224Q74 207 91 233Q120 228 128 254Q147 275 122 296Q104 319 79 303Q51 323 32 310Z" fill="#47764f"/>
+ <path d="M37 283Q49 254 68 247M80 278Q103 254 117 266M55 301Q72 278 94 291" fill="none" stroke="#9fbd7d" stroke-width="3" stroke-linecap="round"/>
+ <path d="M794 390L800 298M799 340L775 318M800 329L823 306" stroke="#6f533c" stroke-width="9" fill="none" stroke-linecap="round"/>
+ <path d="M767 311Q748 290 765 268Q756 243 780 230Q802 213 819 236Q846 229 857 255Q876 275 852 298Q835 320 812 304Q789 323 767 311Z" fill="#315e43"/>
+ <path d="M775 283Q790 253 805 250M815 280Q833 251 847 263M791 301Q808 278 831 291" fill="none" stroke="#a4c17b" stroke-width="3" stroke-linecap="round"/>
+</g>
+<!-- street, kerb and hand-painted road markings -->
+<path d="M0 431Q200 415 390 430T900 418V520H0Z" fill="url(#road)"/>
+<path d="M0 432Q210 416 390 431T900 419" fill="none" stroke="#e7d8b7" stroke-width="8"/>
+<path d="M0 448Q210 432 390 447T900 435" fill="none" stroke="#6c7565" stroke-width="2"/>
+<path d="M35 485L130 479M170 474L260 469M324 469L412 466M486 464L577 459M653 455L744 451M801 448L879 444" stroke="#e6d8b4" stroke-width="5" stroke-linecap="round" stroke-dasharray="42 16"/>
+<!-- danfo bus with detail -->
+<g transform="translate(340 398)">
+ <ellipse cx="0" cy="65" rx="118" ry="12" fill="#455346" opacity=".25"/>
+ <path d="M-118 15Q-116-3-98-8L67-8Q89-6 101 15L112 52Q111 61 98 63H-105Q-120 60-118 45Z" fill="#e6bd4d" stroke="#6b563b" stroke-width="3"/>
+ <path d="M-101 2H-62V27H-105Z" fill="#536b61"/><path d="M-55 2H-16V27H-55Z" fill="#91a99a"/><path d="M-9 2H30V27H-9Z" fill="#91a99a"/><path d="M37 2H70Q83 4 91 27H37Z" fill="#536b61"/>
+ <path d="M-110 34H97L103 46H-112Z" fill="#d36a45"/><path d="M-91 37H75" stroke="#f7e4b7" stroke-width="3" stroke-dasharray="9 5"/>
+ <text x="-8" y="19" font-family="sans-serif" font-size="8" fill="#f6e6bf" text-anchor="middle" font-weight="700">LAGOS</text>
+ <path d="M-105 47H-77V56H-105ZM65 47H93V56H65Z" fill="#3b4339"/>
+ <circle cx="-78" cy="60" r="15" fill="#353d35"/><circle cx="-78" cy="60" r="7" fill="#b8b6a2"/><circle cx="76" cy="60" r="15" fill="#353d35"/><circle cx="76" cy="60" r="7" fill="#b8b6a2"/>
+</g>
+<!-- pedestrians in foreground -->
+<use href="#person" x="155" y="416"/><use href="#person" x="195" y="424"/>
+<g transform="translate(700 408)"><ellipse cx="0" cy="43" rx="15" ry="4" fill="#555e4d" opacity=".18"/><circle cy="0" r="8" fill="#6f4532"/><path d="M-12 9Q0 3 12 9L14 31H-14Z" fill="#557c61"/><path d="M-8 29L-11 47M8 29L11 47" stroke="#3f493c" stroke-width="4" stroke-linecap="round"/><path d="M-12 12L-22 26M12 12L21 24" stroke="#6f4532" stroke-width="4" stroke-linecap="round"/><path d="M-11 7Q0-4 11 7L8-2Q0-13-8-3Z" fill="#e4bd57"/></g>
+<!-- small foreground plant and stool -->
+<g transform="translate(865 408)"><path d="M0 32V0M0 19L-17 8M0 14L15 1M0 25L-14 19" stroke="#5c7047" stroke-width="3" fill="none"/><use href="#leaf" transform="translate(-16 8) rotate(-25) scale(.55)"/><use href="#leaf" transform="translate(14 0) rotate(35) scale(.5)"/><path d="M-13 31H13L9 50H-9Z" fill="#b96e4e"/><path d="M-12 35H12" stroke="#f0d4a1" stroke-width="2"/></g>
+</svg>
