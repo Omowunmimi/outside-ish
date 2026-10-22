@@ -368,3 +368,202 @@ Metrics should be added only with an appropriate privacy-respecting analytics ap
 - Should desktop retain full exploration or move to a mobile-first companion page after usability testing?
 - Which illustration production approach best balances bespoke quality, map readability and content expansion?
 - What privacy-respecting analytics, if any, should be used after the prototype?
+## 19. Continuous discovery specification
+
+### Product requirement
+Discovery is a continuing activity, not a one-time recommendation result. A person should be able to move between the home feed, map, place details, collections and outing plans without encountering a dead end or being forced to restart.
+
+### Discovery surfaces
+1. **For you feed:** A mixed, editorial stream of places, outing ideas, collections, neighbourhood notes and seasonal/editorial features. Use a deliberate rhythm of formats instead of repeating an identical card grid.
+2. **Explore map:** A spatial way to browse neighbourhoods and places. Map movement, place selection and the list of visible discoveries should remain connected.
+3. **Search:** Search place names, neighbourhoods, categories, moods and editorial collections. Search results should offer close alternatives when there is no exact match.
+4. **Outing planner:** Produces a small set of useful starting plans from time, spend, mood, interests and starting area. It is an entry point into discovery, not a separate dead-end tool.
+5. **Related discoveries:** Every place and outing should lead to related places, relevant collections, a neighbourhood story or a nearby next idea.
+
+### Feed behaviour
+- The feed starts with a useful first batch and adds more content as the visitor approaches the end of the current batch.
+- A visible “Keep wandering” action remains available as a manual fallback.
+- If the current local content set is exhausted, the feed may revisit existing editorial items in a newly mixed order. Repeated items must not appear back-to-back, and the interface must not imply that new places were fetched when they were not.
+- As the content library grows, the feed should request the next page from the content source rather than reshuffling the entire catalogue.
+- Preserve the visitor's position when opening a detail view and returning to the feed.
+- Feed state should not jump to the top when the user opens a place and returns.
+- Include a clear loading state when new content is being fetched. If loading fails, keep already-rendered content available and offer retry.
+- Do not use random ordering as the sole recommendation strategy. Apply relevance, constraints, editorial priority, diversity and freshness.
+- A limited starter dataset is a prototype limitation. It must not be represented as a complete or live Lagos directory.
+
+### Content variety and cadence
+The long-term feed should support:
+- Place spotlights
+- Curated collections
+- Neighbourhood field notes
+- Outing plans
+- Short local guides
+- “If you liked this…” recommendations
+- Budget-conscious and low-commitment ideas
+- Art, food, books, music, public space, culture, learning and unexpected discoveries
+- Timely events only when a trustworthy, current source is integrated
+
+## 20. Map interaction and cartography requirements
+
+### Map model
+The initial map is an illustrated, editorial city map. It communicates neighbourhood atmosphere and helps visitors discover content. It is not a scale-accurate street map and must not imply turn-by-turn directions, exact distances or live location.
+
+### Required interactions
+- Drag/pan the map with touch and mouse.
+- Zoom in and out with visible controls; support wheel zoom on desktop.
+- Recenter to the default map view.
+- Select a place marker and open its detail view.
+- Filter visible places by supported categories.
+- Search from the map.
+- Browse a synchronised discovery list or bottom sheet.
+- Keep map controls anchored to the viewport while the map artwork moves.
+- Prevent a drag gesture from accidentally activating a place marker.
+- Provide accessible controls in addition to gestures.
+- Preserve selected place and filter state when moving between map and detail.
+- At useful zoom levels, keep markers identifiable and tappable. Do not let illustration detail obscure essential place markers.
+
+### Map visual hierarchy
+1. Water, parks and land masses
+2. Major streets and connectors
+3. Neighbourhood names
+4. Distinctive blocks, buildings and street details
+5. Place markers and selected-place state
+6. Supporting controls and discovery sheet
+
+The city illustration should use recognizable architectural variation: mixed rooflines, balconies, shop fronts, signs, awnings, doors, window groupings, trees with varied silhouettes, people, street vendors and vehicles. Avoid relying on isolated triangles, circles or emoji to communicate a whole building or street scene. Keep decorative detail subordinate to map legibility.
+
+### Geographic truth and future migration
+- Current map coordinates are illustration coordinates, not latitude/longitude.
+- Do not calculate real walking distance, nearby status or travel duration from illustration coordinates.
+- A future geographically accurate map should use a dedicated map/data adapter with real coordinates and a suitable mapping provider.
+- Map provider, tiles, geocoding, route calculations, attribution and cost limits require a separate technical decision before implementation.
+- If a place has not been geocoded, it can still appear in an editorial collection but must not be represented as precisely located.
+
+## 21. Platform strategy
+
+### Mobile
+Mobile is the primary product surface. The design should support one-handed browsing, safe-area insets, bottom navigation, clear tap targets, map gestures, compact but legible text and bottom sheets that respect the keyboard and device height.
+
+### Desktop and wider screens
+Desktop remains supported through a deliberately composed companion layout, not a stretched mobile canvas. It should have:
+- A restrained content width and a consistent grid
+- Clear hierarchy between the discovery feed and supporting controls
+- A map canvas that uses the available viewport intentionally
+- A pinned or docked discovery panel that does not scatter content around the screen
+- Fixed map controls and a clear selected-place panel
+- Comfortable text sizes and keyboard navigation
+
+Do not show a generic “not available on web” screen solely because the map is illustrated. The illustrated map can work on desktop when its layout, pan/zoom controls and discovery panel are designed for that viewport. Reconsider mobile-only access only if usability testing shows desktop creates more confusion than value.
+
+## 22. Personalisation and outing planning
+
+### Inputs
+- Mood or energy: soft/slow, food-focused, curious/cultural, outdoors, social, unexpected
+- Available time
+- Spend preference
+- Starting neighbourhood or preferred area
+- Interests
+- Optional mobility/access needs when reliable content data supports them
+
+### Recommendation rules
+- Return a small, scannable set of distinct suggestions.
+- Explain why each suggestion fits the selected constraints.
+- Respect selected time and spend constraints where the underlying data supports a reasonable estimate.
+- Mark uncertain spend and duration as estimates.
+- Do not imply that a plan has checked live traffic, opening status, event schedules or route conditions unless it has.
+- Offer “swap this stop”, “shorten this plan”, “show another idea”, “save” and “open on map” actions.
+- If no result matches all constraints, state the trade-off and offer the nearest alternatives rather than silently ignoring the constraints.
+
+## 23. Content and data operations
+
+Every production place record should support, where applicable:
+- Stable ID, public name, category and descriptive editorial copy
+- Address and neighbourhood
+- Latitude/longitude only when sourced and geocoded
+- Official website and source references
+- Source type, source URL, date checked and confidence/status
+- Opening hours with day-specific exceptions where known
+- Price information with currency and whether it is exact, a range or an estimate
+- Tags for mood, interest, access and outing suitability
+- Image/illustration rights and attribution requirements
+- Last updated timestamp and editorial review status
+
+A source link alone is not proof that every displayed fact is current. Data should be reviewed periodically. Stale hours, prices or event listings should be labelled, suppressed or rechecked according to a documented freshness policy.
+
+## 24. States and resilience
+
+Each major surface must define:
+- Initial loading state
+- Populated state
+- Empty state
+- Recoverable error state
+- Offline or stale-data state where applicable
+- Selected, saved and visited states
+- Keyboard-focus and pressed states
+- Reduced-motion state
+
+The app shell should remain usable when the network is unavailable after installation. Do not imply that all place content is fresh merely because the PWA shell loads offline. Local saves and visit history should remain available on the device that created them.
+
+## 25. Analytics and evaluation
+
+Potential privacy-conscious events:
+- Feed batch viewed
+- Discovery opened
+- Related discovery opened
+- Map panned/zoomed/filtered
+- Search submitted and result selected
+- Planner completed and plan selected
+- Place saved or marked visited
+- Source link opened
+- Return visit
+
+Do not collect precise location, names or sensitive personal details by default. Analytics must be disclosed appropriately and should avoid storing raw search text if it could contain personal information.
+
+### Evaluation questions
+- Can a first-time visitor find a plausible activity without creating an account?
+- Do people continue from one discovery to another?
+- Can a person tell whether a map is illustrative or geographically accurate?
+- Can visitors understand price and opening-hour uncertainty?
+- Does the desktop experience feel intentionally composed?
+- Can a person return from a place detail without losing their browsing position?
+
+## 26. Updated release priorities
+
+### P0: Product and interaction foundation
+- Replace generic/neumorphic presentation with the Outsideish editorial illustration system.
+- Make mobile and desktop layouts deliberate and consistent.
+- Improve map illustration detail and hierarchy.
+- Verify pan, zoom, recenter, marker selection, filters, search and return navigation.
+- Ensure continuous feed browsing without a dead-end state.
+- Keep copy honest about data coverage, map precision and live integrations.
+- Finalise PRD, design system, motion and QA documentation.
+
+### P1: Content depth
+- Expand the reviewed Lagos place library and add collections and neighbourhood stories.
+- Introduce related discovery links and a richer editorial feed cadence.
+- Improve search with categories, neighbourhoods, synonyms and useful fallback results.
+- Add a content freshness and review workflow.
+
+### P2: Real-world utility
+- Evaluate a coordinate-aware map provider and geocoding.
+- Add reliable route links and real directions via an external maps app or approved provider.
+- Add current events only after source coverage, update frequency and attribution are agreed.
+- Add opening-hour and price verification workflows.
+
+### P3: Personal continuity
+- Optional account and cross-device sync.
+- Preference management and more useful recommendations based on explicit choices.
+- Shareable outing plans and collaborative planning, if validated.
+
+## 27. Definition of done for the visual refresh
+- The design does not use neumorphism as its primary visual language.
+- Screens use purposeful composition, hierarchy and varied content formats.
+- The map contains architectural and street-life detail beyond primitive geometric silhouettes.
+- Desktop layouts are aligned to a deliberate grid and do not overflow or scatter.
+- Mobile layouts have no horizontal overflow and preserve safe-area spacing.
+- The feed continues to append content and retains manual continuation.
+- Map controls remain reachable while panning and zooming.
+- Reduced-motion preferences are respected.
+- Search, detail, save, visit, planner and navigation flows continue to work after the styling changes.
+- Automated browser checks cover narrow mobile, standard mobile and desktop widths.
+- Any remaining limitations are documented honestly.
