@@ -78,30 +78,26 @@ Use colour with hierarchy. Large surfaces should not all be the same warm neutra
 - Do not create a false claim of map scale or location accuracy through visual precision.
 
 ## Map visual hierarchy
-1. Neighbourhood name and broad orientation.
-2. Primary roads and water/green spaces.
-3. Distinct landmarks and illustrated building blocks.
-4. Place markers.
-5. Selected place and map controls.
-6. Editorial annotation.
+1. The city illustration and its spatial relationships.
+2. Neighbourhoods, landmarks and architecture.
+3. Place markers and discoverable features.
+4. Search, filters and essential controls.
+5. The selected-place sheet, only after selection.
 
-Place pins should have category shape/colour distinctions, a selected state, and sufficient touch area. A selected place should be unmistakable without covering its context.
+### Default map state
+The map occupies the viewport. Search, filter and essential map controls are the only persistent overlays. Do not show a persistent discovery tray, “Illustrated Lagos” label, city badge or sticker annotations.
 
-## Component guidance
-- **Primary action:** high contrast and clear verb, used sparingly.
-- **Secondary action:** quiet outline or text action.
-- **Discovery item:** may be a horizontal editorial row, full-bleed illustrated panel, list item, map preview or image-led card depending on content.
-- **Filter:** accessible toggle/chip with selected state, not decorative pill-only UI.
-- **Bottom sheet:** map companion panel that can collapse, expand and preserve access to map gestures.
-- **Place detail:** strong title and illustration first, then location facts, editorial context, practical notes, source and onward discovery.
-- **Empty state:** explains why it is empty and offers a meaningful next action.
-- **Loading state:** use a small skeleton or map shimmer only when a real asynchronous operation is pending.
+### Markers and selection
+Markers are part of the illustration system, not emoji inside generic pins. They remain still when idle, have clear hit targets, and use a restrained pressed and selected state. Selection opens a bottom sheet without navigating away.
+
+### Place bottom sheet
+The sheet is hidden on initial load. It opens from the bottom only when a place is selected, shows concise editorial and practical details, and closes without changing map position or zoom. Selecting another place updates the sheet in place.
 
 ## Responsive rules
 ### Mobile
-- Treat the app as a full-screen native-feeling experience.
+- Treat the app as a full-screen native-feeling experience. The map itself leads, with only search, filters and essential controls.
 - Bottom navigation remains reachable and respects safe-area insets.
-- Keep map controls within thumb reach, avoid covering important pins, and make the detail tray collapsible.
+- Keep map controls within thumb reach. The place sheet is hidden until selection and should leave a substantial area of the city visible.
 - Avoid dense multi-column card grids for core browsing.
 - Keep primary touch targets around 44px or larger.
 
