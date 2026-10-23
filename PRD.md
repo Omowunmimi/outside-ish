@@ -1,79 +1,81 @@
 # Outsideish Product Requirements Document
 
-**Status:** Reset specification and source of truth before further UI implementation  
-**Initial city:** Lagos, Nigeria | **Platform:** Mobile-first PWA
+## Product summary
+Outsideish is a mobile-first PWA and web experience for discovering real places, making outings and keeping a personal record of places visited. Lagos is the starting city. The product should work for guests without requiring an account to explore.
 
-## Why this reset exists
-The current UI has serious quality problems: cramped composition, inconsistent visual language, missing/inconsistent icons and broken interactions. The previous visual pass is not an approved direction. This is a structural reset, not another polish pass. First align the product architecture, screen contracts, design tokens, icon set and acceptance criteria. Then rebuild and test each screen.
+## Product jobs
+1. **Inspire me:** help turn a vague desire to go out into possible experiences.
+2. **Make me a plan:** help build an outing using mood, available time, budget, interests and starting area, with “Surprise me” as an option.
+3. **Help me explore:** connect discoveries, places, collections and adventures through a full-screen illustrated city map and browsing feed.
+4. **Help me remember:** save places and plans, share discoveries, mark places visited and keep a journal.
 
-## Product promise
-Outsideish helps people find something worth going outside for, build a lightweight outing and keep discovering. It should feel like a curious local's illustrated city field guide, not a generic directory, a dashboard or a map decorated with pins.
+## Core journey
+1. Open Outsideish and browse or search without signing in.
+2. Search for a place, neighbourhood, interest or experience, or choose a mood.
+3. Optionally add time, budget, interests and starting neighbourhood. Allow skipped preferences and a Surprise me path.
+4. Receive a small set of relevant adventures rather than an undifferentiated directory.
+5. Open an adventure to understand its stops and why they belong together.
+6. Explore its places on the map, change a stop, shorten a plan, save or share it.
+7. Return to saved places, previous plans, visited places and journal entries.
 
-## Principles
-1. Clarity before decoration. Each screen has one clear purpose and primary action.
-2. A connected city. Places lead to relevant collections, neighbourhood stories, map discoveries and outings.
-3. A coherent system. Typography, spacing, controls, icons and states follow shared rules.
-4. Comfortable density. Do not squeeze everything into one viewport; reveal detail progressively.
-5. Mobile-first by design. Do not stretch a phone interface to fill desktop.
-6. Locally grounded illustration. Use researched Lagos detail, not generic tropical clichés.
-7. Honest information. Label estimates and source-backed details; never invent live functionality.
-8. Accessible by default. Semantic controls, contrast, keyboard access, safe touch targets and reduced motion.
-9. No false functionality. The current map is illustration-coordinate based, not accurate cartography.
+## Product surfaces
+- **For you / discovery:** search, mood-led entry points and varied discoveries.
+- **Explore:** full-screen illustrated map with search and filters. Selecting a place opens a contextual bottom sheet without navigating away from the map.
+- **Plan:** optional preferences and a changeable outing.
+- **Saved:** places and plans saved by the visitor.
+- **Visited / journal:** places the visitor marks as visited and their personal record.
 
-## Audiences and needs
-- **Undecided explorer:** discover something matching mood, time, interests and spend.
-- **Neighbourhood wanderer:** pan around a lively illustrated city and find places worth opening.
-- **Lightweight planner:** assemble an outing, swap a stop or shorten the plan.
-- **Memory keeper:** save places/plans and record visits without mandatory signup.
+Names and navigation arrangement can be adjusted during implementation only when supported by the product flow; do not add destinations or steps just to fill the interface.
 
-## Goals and non-goals
-Goals: distinctive visual identity; clear navigation; useful search and discovery; map exploration; lightweight planning; device-local saves; open-ended browsing; reliable responsive behaviour.
-Not in scope without integrations: live routing, traffic, GPS accuracy, open-now status, live events, bookings, payments, public reviews, cross-device sync or mandatory accounts.
+## Map requirements
+- The map is a central experience, not a static illustration behind a few pins.
+- It should be freely explorable and geographically grounded, with illustrated streets, buildings, storefronts, people, landmarks and relevant local details.
+- Search and filters are available on the map. Do not show a persistent place sheet or discovery tray on initial entry.
+- Tapping an interactive place opens a bottom sheet while remaining on the map. Closing it returns to the same map position and zoom.
+- The map and discovery feed should lead into one another: a place can lead to a collection, neighbourhood story or outing, and an outing can lead back to map exploration.
+- Decorative scenery and interactive places must be distinguishable.
+- Do not claim exact geography, live GPS, routing, distance, traffic or travel time unless supported by an actual integrated source.
 
-## Primary information architecture
-- **For you:** editorial welcome, search, mood entry points and varied discoveries.
-- **Explore:** unobstructed illustrated map, search, filters, zoom/recenter and contextual place sheet.
-- **Plan:** optional preferences and a clear itinerary with honest estimates.
-- **Saved:** places and plans saved for later.
-- **Journal:** places the visitor has marked as visited.
+## PWA and web requirements
+Outsideish must be developed and documented as a Progressive Web App, not just a responsive webpage.
+- Provide a valid web app manifest with app name, short name, icons, theme/background metadata and appropriate display settings.
+- Provide a service worker for the app shell and a defined offline/failure experience.
+- Ensure installability requirements are met and test installation where supported.
+- Ensure app assets and navigation behave on fresh load, repeat load and offline load.
+- Update the service-worker cache when shipped assets change, and prevent stale HTML/CSS/JS combinations.
+- Treat offline capability honestly: cached app UI does not mean venue data, hours, events or maps are live or fully available offline.
+- Support mobile browsers and installable PWA use. Desktop remains supported as a web entry point, but should guide visitors towards using a phone for the intended app experience rather than stretching the mobile UI into a desktop dashboard.
+- Account for safe areas, keyboard input, touch interaction and browser differences.
 
-Persistent bottom navigation must remain visible and usable on every mobile destination, including Explore. Account for safe areas and keep content clear of the navigation.
+## Guest access, saves and journal
+- Browsing and exploring do not require signup.
+- Saved items and visit history must clearly indicate whether they are stored on the current device or synced by an implemented account service.
+- Do not imply cloud sync, account recovery or cross-device persistence unless built.
+- Signup can be offered later when a user chooses a feature that actually requires it; do not block initial exploration.
 
-## Journey contracts
-### First visit
-Show one clear editorial anchor, a useful first action, easy-to-find search and a limited set of varied discoveries. Each item leads to a meaningful next step.
+## Real-world information and trust
+Use real places and sourced information. Keep source links and note uncertainty where details may change or cannot be confirmed. Do not invent addresses, prices, opening hours, events, reviews or venue features. Label spend and duration as estimates when they are estimates. Do not imply real-time availability or routing without an integration.
 
-### Explore
-Open directly to the city illustration with only essential controls. No permanent sheet, tray or title banner. Selecting a real marker opens a bottom sheet without changing primary destination. Selecting another marker updates the same sheet. Closing it preserves map position, zoom and filters. The bottom navigation stays visible.
+## Interface requirements
+- Mobile-app UI, not a conventional marketing website layout. Do not add website-style headers, oversized section labels or unnecessarily large type.
+- Clear hierarchy and comfortable spacing. Do not cram controls, labels and content together.
+- No emoji in the interface.
+- Do not use neumorphism, piles of elevated/floating buttons, heavy outlines, generic dashboards, repeated identical card layouts or primitive placeholder illustrations.
+- Use a consistent icon set. The actual icon family and detailed styling must be approved through the implementation, not guessed from this document.
+- Motion can support orientation and interactions. Any future sound is optional and must never be required to use the product.
+- Include loading, empty, no-results, offline and error states, as well as keyboard and assistive-technology support.
 
-### Plan
-Ask only for useful optional constraints. Results must reflect the available dataset, show ordered stops, label spend/time as estimates where appropriate, and support swap/shorten without resetting unrelated choices.
+## Scope boundaries
+Do not claim live routing, live traffic, GPS accuracy, open-now status, live event feeds, booking, payment, public reviews, or cross-device sync unless each capability is implemented and its source is documented.
 
-### Save and remember
-Actions update visibly. Saved items and visits persist on the same device. Empty states offer a next step and never resemble a broken screen.
-
-## Screen requirements
-- **For you:** one dominant introduction, readable search, intentional editorial variety, no long stack of identical cards.
-- **Search:** supports known place names, categories and neighbourhood terms; clear no-result state; no unsupported proximity claims.
-- **Map:** distinct scenes and landmarks; fixed controls separate from the pannable world; real interactive markers; non-map list alternative.
-- **Place detail:** name, category, neighbourhood, useful description, source/address where available, caveats and clear actions.
-- **Plan:** grouped choices, clear selected states, readable itinerary, honest estimates and functional remix/swap.
-- **Saved/Journal:** distinguish saved from visited; populated and empty states; device-local limitation clear.
-- **Desktop:** deliberate phone hand-off page, not a stretched mobile dashboard. No fake QR code; any QR code must resolve to the actual product URL.
-
-## Release-blocking requirements
-No overlapping or clipped content, crushed controls, inconsistent icon packs, emoji, heavy outlines, raised/neumorphic buttons, offset shadows, primitive placeholder map scenes, dead controls, trapped navigation, map gesture conflicts, inaccessible focus, or unsupported live-data claims.
-
-## Trust and limitations
-The local dataset is a small starter collection, not a complete or live Lagos directory. Map geometry is illustrative. Opening hours and prices can change. Saves and visit history are device-local. See CONTENT_GUIDE.md.
-
-## Delivery order
-1. Freeze UI polish and audit every screen against this document.
-2. Approve design tokens, typography, spacing, icons and component states.
-3. Rebuild the shared shell and navigation.
-4. Rebuild each primary screen against its contract.
-5. Rework map art and map interaction as separate workstreams.
-6. Run QA at all required widths and interaction modes.
-7. Verify the exact deployment commit and environment before calling anything released.
-
-See DESIGN_SYSTEM.md, ICON_SYSTEM.md, MOTION.md, ARCHITECTURE.md, CONTENT_GUIDE.md and QA_PLAN.md for implementation rules.
+## Acceptance criteria
+- Core journeys work without an account.
+- Search, mood entry, optional preferences and Surprise me are usable.
+- Place details open in a bottom sheet without leaving Explore.
+- Map pan/zoom and pin selection do not conflict.
+- Saved and visited states persist according to the actual storage model.
+- The feed, map, places and adventures connect to one another.
+- All visible controls work and have clear accessible names.
+- Layout is legible at mobile sizes with no clipping, overlap or horizontal overflow.
+- PWA manifest, service worker, installability and offline behaviour are tested.
+- All real-world claims are sourced or clearly labelled as estimates/uncertain.
