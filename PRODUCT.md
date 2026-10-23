@@ -50,3 +50,12 @@ Use real places and cite or retain sources for information. Make uncertainty vis
 
 ## Out of scope unless implemented
 Live GPS accuracy, traffic, turn-by-turn directions, real-time opening status, live event feeds, bookings, payments, reviews and cross-device sync must not be implied without a working integration.
+
+
+## User outcomes and flows
+The established journey is: enter as a guest → browse/search or start with a mood/“Surprise me” → optionally add time, budget, interests and starting neighbourhood → review adventure ideas → inspect stops → adapt the plan or explore its places on the map → save/share → mark visits and return to Saved/Journal. This is a flexible journey, not a required linear funnel. Direct search and direct map exploration remain valid starting points.
+
+See [PRD.md](PRD.md) for detailed user stories, acceptance criteria and edge cases; [USER_FLOWS.md](USER_FLOWS.md) for step-by-step flows; and [PWA.md](PWA.md) for install, cache, update and offline requirements.
+
+## PWA readiness
+A valid manifest is necessary but not sufficient. The service worker, cache update lifecycle, icon paths, installability and offline/failure experience must be verified in supported browsers. Cached app-shell UI must never be presented as live or current venue information.
