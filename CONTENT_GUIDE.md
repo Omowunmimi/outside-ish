@@ -1,34 +1,28 @@
-# Outsideish Content Guide
+# Outsideish Content and Data Guide
 
-## Editorial standard
-Outsideish is a city guide with a point of view. Every item should help someone imagine an experience and make a useful decision. Write specifically, conversationally and with light wit. Avoid generic promotional copy and do not force slang into every sentence.
+## Content purpose
+Content helps a person decide where to go, what to do and how places connect into an outing. Use real places and useful details. Do not invent local facts to make a screen look complete.
 
 ## Content types
-- **Place:** venue/public place with practical visit information.
-- **Collection:** curated set tied to a useful editorial idea.
-- **Neighbourhood story:** short guide to an area's character and discoveries.
-- **Adventure:** outing with a mood, ordered stops and practical caveats.
-- **Field note:** small observation, local detail or tip.
+- Place: a real venue or public place.
+- Collection: a set of related discoveries.
+- Neighbourhood story: useful context about an area.
+- Adventure: an outing with related stops.
+- Journal entry: a place or outing the visitor records as visited.
 
-Vary the formats in the feed. Do not make every item read or look like the same venue card.
+These types should connect naturally between the discovery feed, map, plans and personal history.
 
-## Place checklist
-- [ ] Accurate public name and category.
-- [ ] Neighbourhood and usable address where available.
-- [ ] Source URL/type, preferring the official source.
-- [ ] Last-checked date where practical.
-- [ ] Opening hours only when sourced; explain that they can change.
-- [ ] Price and duration marked as exact, range or estimate.
-- [ ] Specific, useful description.
-- [ ] Relevant mood/interest tags and related items.
-- [ ] Missing facts omitted or marked unknown, never invented.
-- [ ] Distinctive illustration that does not imply geographic precision.
+## Information integrity
+- Use reliable sources for place names, addresses, opening hours, prices and event details.
+- Retain source links where available.
+- Make uncertainty visible when a fact cannot be confirmed or may have changed.
+- Label estimated spend and duration as estimates.
+- Do not claim open-now status, live events, current prices, real travel times or live traffic without suitable current data.
+- Do not present the illustrated map as proof of exact geography.
+- If a detail is unknown, omit it or say it is unknown rather than inventing it.
 
-## Trust labels
-Use Official source, Listing source, Editorial note, Estimate, Check before leaving and Illustrated map when appropriate. Do not say verified, open now, live, nearby, current or accurate unless the data source and method support the claim.
+## Recommendations
+Use mood, time, budget, interests and starting neighbourhood when supplied. Allow users to skip preferences or choose “Surprise me”. Explain the practical reason an adventure fits, using information the product actually has. Do not claim personalised or live matching beyond the implemented data and logic.
 
-## Recommendations and continued discovery
-Explain why an item fits the selected mood, time, interests or area. If no exact match exists, explain the trade-off and show the closest useful alternative. Feed continuation preserves existing items and adds another batch. When the local starter dataset is exhausted, it may be remixed but must not be described as freshly fetched data. Avoid immediate duplicates where practical.
-
-## Map and illustration
-Use researched Lagos architecture, signage, street activity, plants, transport and neighbourhood details. Give areas distinct visual landmarks and scene compositions. Do not reuse the same scene crop to imply city coverage. Separate decorative scenery from interactive markers. Do not derive real distance, route or travel time from illustration coordinates.
+## Guest and journal data
+Make clear whether saved places, plans and visit history are stored locally or synced through an implemented account. Do not imply cloud backup or cross-device sync if absent.
