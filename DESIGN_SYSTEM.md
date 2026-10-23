@@ -38,3 +38,15 @@ This document records the interface constraints explicitly established for Outsi
 
 ## Details not yet specified
 The product documentation does not set a final palette, exact fonts, exact spacing scale, corner radii, icon drawing style, breakpoint values or motion durations. Do not present assistant-selected values for these as user-approved design decisions. Propose them for review or derive them from a subsequently approved design reference.
+
+
+## Screen-by-screen consistency checks
+For each screen, verify that:
+- the screen has a clear purpose and the most relevant next action is understandable;
+- controls are grouped by task and are not crowded together;
+- the same action uses the same icon, label and interaction pattern across screens;
+- selected, disabled, loading, error, empty and success states are handled where relevant;
+- the screen works with the persistent navigation and device safe areas;
+- no design detail has been treated as approved solely because it appeared in an assistant-generated mockup or implementation.
+
+The specific visual system remains an implementation decision to review. Do not turn this document into a source of invented palette, font or geometry requirements.
