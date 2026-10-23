@@ -1,66 +1,40 @@
-# Outsideish Design System
+# Outsideish Interface Requirements
 
-**Status:** Reset specification. These rules replace inconsistent one-off styling.
+This document records the interface constraints explicitly established for Outsideish. It does not invent a colour palette, font family, icon aesthetic, exact component geometry or animation timings. Those details should not be treated as approved until separately decided.
 
-## Design objective
-Expressive, locally grounded and illustrated, but never cramped or chaotic. Illustration creates personality; disciplined hierarchy and spacing make the product usable. Do not treat the current UI as an approved reference or layer more styling onto broken structure.
+## Overall experience
+- Mobile-first PWA with a web entry point.
+- The mobile experience should feel like an app, not a conventional marketing website.
+- Do not use website-style headers, oversized section labels or unnecessarily large typography.
+- Keep layouts clean, legible and comfortably spaced. Do not cram unrelated controls or content together.
+- Desktop is supported, but should encourage phone use for the intended experience rather than stretch the mobile interface into a dashboard.
 
-## Principles
-- One dominant visual anchor and clear hierarchy per screen.
-- Generous spacing and deliberate grouping; do not fill every gap with decoration.
-- Variety in editorial content, consistency in repeated controls.
-- Flat controls. No neumorphism, raised-button stacks, offset shadows or heavy outlines.
-- Illustration supports content rather than obscuring it.
-- One custom SVG icon family. No emoji, arbitrary Unicode symbols or mixed icon packs.
-- Mobile-first composition; design at 390px before adapting to other widths.
+## Explicitly rejected UI patterns
+- No emoji in the interface.
+- No neumorphism.
+- No piles of elevated or floating buttons.
+- No heavy outlines.
+- No generic dashboard layouts.
+- No repeated identical card layouts.
+- No primitive placeholder illustrations used in place of considered city scenes.
+- Do not add unrequested visual flourishes or impose an unapproved visual direction.
 
-## Colour tokens
-| Token | Hex | Purpose |
-|---|---|---|
-| Ink | #24312B | Primary text |
-| Forest | #315B45 | Primary action and selected navigation |
-| Clay | #C75C43 | Secondary emphasis |
-| Sun | #E6BD53 | Small highlights |
-| Lagoon | #7BB8B3 | Water and calm accent |
-| Leaf | #71866A | Parks and foliage |
-| Orchid | #9277A8 | Occasional category accent |
-| Paper | #FAF7ED | Reading surface |
-| Field | #F2EDE1 | Main canvas |
-| White | #FFFFFF | High-clarity surface |
-| Muted ink | #626A63 | Secondary text if contrast passes |
-| Rule | #D9D4C8 | Subtle divider |
-| Error | #A83E36 | Error/destructive state |
+## Map and discovery
+- The map is a central, full-screen, freely explorable illustrated city.
+- It should be geographically grounded and include considered city details, buildings, streets, people and places.
+- Search and filters are available on the map.
+- No persistent place sheet or discovery tray on initial map entry.
+- Tapping a place opens a bottom sheet without navigating away from the map.
+- Closing the sheet preserves map position and zoom.
+- The feed and map should connect places, collections, neighbourhood stories and adventures.
 
-Do not invent one-off colours without a reason. Do not use colour as the only state indicator. Avoid making every surface the same beige or using rainbow category chips.
+## Consistency requirements
+- Use one consistent icon set. Do not substitute emoji or arbitrary text characters.
+- Reuse shared components for repeated interface patterns.
+- Keep typography, spacing, control behaviour and states consistent across screens.
+- Design loading, empty, no-result, offline and error states as part of the interface.
+- Use accessible names, keyboard support, readable contrast and touch-friendly controls.
+- Motion may support orientation and interaction. Future sound is optional and never required.
 
-## Typography
-Use two families only: Fraunces or similar expressive serif for editorial display, and DM Sans or a highly legible sans for UI/body. Include fallbacks.
-- Display: 34–42px.
-- Screen title: 26–32px.
-- Section title: 19–23px.
-- Item title: 17–20px.
-- Body: 15–17px.
-- Supporting: 13–14px.
-- Metadata: 11–12px, never for essential instructions alone.
-
-## Spacing and layout
-Use a 4px rhythm: 4, 8, 12, 16, 20, 24, 32, 40 and 48px. Phone gutters are usually 16–20px. Keep at least 12px between unrelated groups. Do not shrink text or gutters to force more into a row. Use layout gaps rather than arbitrary margin patches or negative transforms. Respect safe areas and persistent navigation.
-
-## Surfaces and controls
-Use a restrained radius scale: 8px compact, 12px standard, 18px large editorial. Pills are only for compact filters/tags. Dividers use a subtle one-pixel rule. Buttons are flat, with no drop shadows or raised/inset effects. Avoid outlining every component.
-
-## Screen composition
-- **For you:** one editorial anchor, obvious starting action, easy-to-find search, varied formats rather than repeated identical cards. First viewport stays focused.
-- **Explore:** map fills available area above persistent bottom navigation. Essential controls sit in a fixed layer. No initial title banner, tray or place sheet.
-- **Plan:** group choices by purpose and make selected states obvious.
-- **Saved/Journal:** prioritise names and meaningful state; distinguish saved from visited.
-- **Desktop:** intentional phone-use hand-off, not a stretched phone layout.
-
-## Component inventory
-Shared components are required for app shell/navigation, button variants, icon button, search, filters, selectors, place result, editorial feature, collection and outing preview, place sheet, plan stop/summary, saved/visited states, empty/loading/offline/error/no-result states and feedback toast. Define default, pressed, selected, disabled, focus-visible, loading and error states as applicable. State styling must correspond to real application state.
-
-## Illustration quality
-Draw scenes, not symbols. Use researched architecture, varied storefronts, signage, windows, awnings, balconies, street furniture, plants, people and locally appropriate transport. Avoid triangle-roof houses, repeated tree circles, generic grids or reusing the same scene crop to imply city coverage. Separate semantic SVG groups for geography, landmarks, decorative art and interactive places. The map is illustrative, not geographic.
-
-## Accessibility and implementation
-Use semantic controls, accessible names, visible focus, contrast checks, reduced-motion support and touch targets ideally at least 44×44px. Test 360, 390, 430, 759 and 760px plus desktop hand-off. CSS custom properties are the source of truth. Remove conflicting legacy rules and obsolete variants instead of adding specificity patches. No screen is complete until visual, interaction and responsive checks pass.
+## Details not yet specified
+The product documentation does not set a final palette, exact fonts, exact spacing scale, corner radii, icon drawing style, breakpoint values or motion durations. Do not present assistant-selected values for these as user-approved design decisions. Propose them for review or derive them from a subsequently approved design reference.
