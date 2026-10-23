@@ -27,3 +27,7 @@ Do not add icons for features that do not exist. Names above describe semantic n
 - [ ] Decorative icons are hidden from assistive technology.
 - [ ] Icons remain legible at actual rendered sizes.
 - [ ] Icon state matches the real action state.
+
+
+## Screen coverage audit
+Before sign-off, inspect every primary destination and every action surface, including search, map controls, place sheets, adventure/plan actions, Saved, Visited/Journal, share fallbacks, offline states and errors. Compare the rendered icons to the central asset set; do not allow one-off substitutes in individual screens. The inventory should follow actual implemented destinations and actions rather than adding icons for hypothetical features.
