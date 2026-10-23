@@ -79,3 +79,67 @@ Do not claim live routing, live traffic, GPS accuracy, open-now status, live eve
 - Layout is legible at mobile sizes with no clipping, overlap or horizontal overflow.
 - PWA manifest, service worker, installability and offline behaviour are tested.
 - All real-world claims are sourced or clearly labelled as estimates/uncertain.
+
+
+## 17. Detailed user stories and acceptance criteria
+
+### Guest discovery
+- As a first-time visitor, I want to browse without creating an account so I can evaluate the product before committing.
+- As a visitor who does not know where to go, I want mood-led starting points so I can find a relevant idea.
+- As a visitor who wants to decide quickly, I want “Surprise me” so I can get a starting point without filling in preferences.
+- As a visitor with a specific idea, I want to search for a place, neighbourhood, interest or experience so I can reach relevant content directly.
+- As a visitor who finds something interesting, I want connected places, collections, neighbourhood stories and adventures so I can continue discovering.
+**Acceptance:** guest access works; search and mood entry work with the supported dataset; optional preferences are not required; no-result states offer an alternative.
+
+### Planning
+- As a visitor with limited time, I want to set available time so an outing can take that constraint into account when supported.
+- As a visitor managing spend, I want to set a budget and see clearly labelled estimates so I can judge practicality.
+- As a visitor with specific interests, I want to add interests optionally so recommendations can be more relevant.
+- As a visitor starting from a neighbourhood, I want to provide that area so it can inform the plan where the data supports it.
+- As a visitor who likes part of an outing, I want to swap a stop or shorten/remix the plan so I can adapt it without restarting.
+**Acceptance:** plan controls perform real actions; changes preserve unrelated preferences; estimates are labelled; unavailable exact matches are handled honestly.
+
+### Map and connected discovery
+- As a curious visitor, I want to pan and zoom around an illustrated city so I can explore without following a fixed list.
+- As a visitor who taps a place, I want details to open without leaving the map so I can decide whether to explore further.
+- As a visitor comparing discoveries, I want to move between the map, feed and adventures so I can understand how places connect.
+- As a visitor who cannot use map gestures, I want another accessible way to find places.
+**Acceptance:** dragging does not activate markers; fixed controls remain fixed; the same contextual sheet updates between places; close preserves map position/zoom; primary navigation remains usable; map is not the only discovery path.
+
+### Memory and sharing
+- As a visitor, I want to save a place or plan so I can return to it later.
+- As a visitor who has gone somewhere, I want to mark it visited so my history is separate from items saved for later.
+- As a visitor, I want to share a discovery through a working action or fallback.
+- As a guest, I want to know whether my saved/visited data is local or synced so I do not assume it is backed up.
+**Acceptance:** successful changes persist according to the real storage model; failed writes do not show success; share has a working fallback; local state is not described as cloud sync.
+
+### PWA reliability
+- As a mobile visitor, I want to install Outsideish where supported so I can return to it conveniently.
+- As a returning visitor, I want app updates to load compatible assets so an update does not break the interface.
+- As an offline visitor, I want a clear explanation of what remains available so cached UI is not mistaken for current venue data.
+**Acceptance:** manifest assets resolve; service worker registration, installation, repeat load, update and offline behaviour are tested on supported browsers.
+
+## 18. Journey-level release checklist
+
+A complete end-to-end QA pass must verify each of the following:
+1. Open as guest and begin discovery.
+2. Search directly without entering planning.
+3. Start from a mood and skip optional preferences.
+4. Use “Surprise me” without providing every preference.
+5. Open an adventure and inspect its stops.
+6. Change a stop or shorten the plan, if those controls are present.
+7. Move from adventure to map and from map to connected content.
+8. Open and close a map place sheet without losing map position or zoom.
+9. Save a place/plan and find it again in Saved.
+10. Mark a place visited and find it in Visited/Journal.
+11. Share a place/outing or use the supported fallback.
+12. Test PWA fresh load, repeat load, update, install where supported, and offline state.
+13. Repeat critical flows at mobile widths and with keyboard/reduced-motion settings where applicable.
+
+## 19. PWA update and offline lifecycle
+
+The service worker must have a documented cache strategy for the app shell. When a release changes shell resources, update the cache version or invalidation mechanism, remove obsolete caches where appropriate, and verify that a client does not continue using a broken mixture of release assets. Offline UI must clearly distinguish local/cached content from information that requires a network. Do not promise full offline discovery unless the content and interactions required for that journey are actually available offline and tested.
+
+## 20. Open verification items
+
+The following require inspection and testing before being reported as complete: actual primary navigation in the running UI; every visible control's behaviour; exact save/visited persistence; share fallback; map gesture and accessible list behaviour; manifest icon validity; service-worker registration and cache strategy; installability and offline behaviour on target browsers; and the production commit currently served.

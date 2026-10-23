@@ -40,3 +40,10 @@ Then open http://localhost:4173.
 
 ## Implementation rule
 Do not treat unapproved design choices as requirements. Do not claim a feature, PWA capability or deployment is complete until it has been implemented and tested.
+
+
+## User journey and functional flows
+The product journey, stories and acceptance criteria live in [PRD.md](PRD.md). Step-by-step flows for guest discovery, search, mood/Surprise me, planning, map exploration, saving, journaling, sharing and PWA use live in [USER_FLOWS.md](USER_FLOWS.md).
+
+## PWA verification
+Use [PWA.md](PWA.md) as the checklist for manifest metadata, icon assets, service-worker registration, app-shell caching, cache invalidation, installation, repeat loads, updates and offline/failure behaviour. A manifest or local preview alone is not proof that PWA readiness is complete.

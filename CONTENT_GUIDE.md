@@ -26,3 +26,10 @@ Use mood, time, budget, interests and starting neighbourhood when supplied. Allo
 
 ## Guest and journal data
 Make clear whether saved places, plans and visit history are stored locally or synced through an implemented account. Do not imply cloud backup or cross-device sync if absent.
+
+
+## Content-to-interface contract
+Content must support the claims made by the interface. If an adventure says it fits a budget, the estimate and the data used must be clear. If the app suggests a place based on a neighbourhood, interest or time, that input must actually influence the implemented matching logic. Do not write copy that implies live personalisation, exact route order or current availability when those capabilities are not present.
+
+## Empty and unavailable information
+When information is missing, prefer omitting the field, explaining uncertainty or offering a useful next step. Do not fill the gap with invented facts, generic filler or misleading placeholder data. Offline copy must distinguish content stored locally from details that need a network connection.

@@ -30,3 +30,7 @@ Motion may support orientation and explain the result of an action. It must not 
 - [ ] Opening and closing a place sheet preserves map position and zoom.
 - [ ] All actions work without relying on animation or sound.
 - [ ] Reduced-motion and keyboard interactions are tested.
+
+
+## Cross-screen behaviour
+Test interactions as complete journeys, not only in isolation. Navigation must remain available when a map sheet is open; returning to the map should preserve its context where specified; saving and visited actions must reflect successful state changes; and failed/offline operations must not animate into a false success state. Motion timings and easing remain unspecified until explicitly approved.

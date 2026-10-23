@@ -33,3 +33,10 @@ Support mobile browser and installed PWA use. Desktop remains accessible as a we
 
 ## Release discipline
 Run syntax checks, asset checks, browser interaction checks, responsive tests and PWA install/offline tests before release. Verify the exact deployed commit and environment. A merged change or preview URL is not proof that production is updated.
+
+
+## PWA lifecycle checklist
+Document the cache strategy used by the actual service worker, including cached shell assets, runtime requests, failed requests, version changes, activation and obsolete-cache cleanup. When the HTML entry point, CSS, JavaScript or icons change, test a clean load and an already-cached client. Do not assume the service worker is correct simply because it exists in the repository.
+
+## Feature status discipline
+Separate intended behaviour from verified behaviour in code reviews and release notes. A requirement in PRD.md is a target, not evidence that the current app implements it. Record actual test results for map interactions, local persistence, sharing, installability, offline behaviour and production deployment.

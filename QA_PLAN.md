@@ -67,3 +67,17 @@ A screen is not ready because it looks acceptable in one screenshot. Verify the 
 - [ ] No missing assets or browser errors.
 - [ ] Local storage errors do not crash the app.
 - [ ] Production URL and deployed commit are verified before release is announced.
+
+
+## Complete user-journey regression
+Run these connected scenarios, not only isolated component checks:
+1. Guest entry → discovery → place → related discovery.
+2. Search → result → place details → map.
+3. Mood or Surprise me → optional constraints skipped → adventure → inspect stops.
+4. Adventure → swap/shorten → verify unrelated choices remain.
+5. Map → select place → select another place → close sheet → verify map context.
+6. Save → Saved → reopen; mark visited → Visited/Journal.
+7. Share → successful share or fallback.
+8. Fresh PWA load → install where supported → repeat launch → update → offline state.
+
+For every failed test, record the screen, browser/device, viewport, steps, expected outcome and actual outcome. Do not mark a flow as passing because only its opening screen rendered.
