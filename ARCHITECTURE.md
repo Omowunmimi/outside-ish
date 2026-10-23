@@ -1,38 +1,35 @@
 # Outsideish Technical Architecture
 
-**Status:** Current runtime notes and reset constraints. Documentation is not proof that a feature currently works.
+## Platform
+Outsideish is intended to be a mobile-first Progressive Web App with a web entry point. The repository currently uses HTML, CSS and JavaScript. Treat each capability as implemented only after verifying the code and testing it.
 
-## Runtime
-Outsideish is a static client-rendered PWA using HTML, CSS and vanilla JavaScript in the Omowunmimi/outside-ish repository. The current UI has reported visual and interaction defects; the documents describe target behaviour, not verified completion.
-
-Expected core files:
-- index.html: screen structure, map SVG, navigation and desktop hand-off.
-- redesign.css: replacement stylesheet intended to be loaded by the HTML entry point; verify the actual link.
-- styles.css: legacy stylesheet may remain; do not re-enable without auditing conflicts.
-- app.js: local content, navigation, search, planning, save/visit and map interactions.
-- manifest.webmanifest: install metadata.
-- sw.js: app-shell cache and offline fallback.
+Expected core files include:
+- index.html: app structure and screens.
+- app.js: navigation, discovery, planning, saving, visits and map interactions.
+- redesign.css and/or styles.css: stylesheets; audit load order and remove conflicting rules rather than layering patches.
+- manifest.webmanifest: PWA metadata.
+- sw.js: service worker and app-shell/offline behaviour.
 - assets/: icons and illustrations.
 
-## Data and state boundaries
-Content is locally bundled unless an integration is explicitly implemented. Local storage may contain saved places/plans and visit history. Ephemeral state includes current screen, search, filters, planner selections, selected place, sheet visibility and map transform. Use stable IDs and handle malformed/old local storage without crashing.
+## PWA requirements
+- Keep manifest fields valid and ensure referenced icons exist.
+- Register and test the service worker.
+- Define which app-shell assets are cached and what happens when a request fails offline.
+- Version caches when relevant assets change and remove obsolete caches when appropriate.
+- Test first load, repeat load, update and offline load.
+- Do not imply that cached app-shell files provide current venue details or live map information.
+- Verify installability in supported browsers rather than assuming the manifest alone makes the app installable.
 
-A place record should support stable ID, name, category, neighbourhood, description, tags, source URL/type, last-checked date, estimate flags and related items where known. Never invent missing facts to fill a layout.
+## State and persistence
+Browsing should work without signup. If saves and visit history use local storage, label them as device-local and handle missing, malformed or outdated data without crashing. Do not claim account-backed sync or cross-device persistence unless a backend is implemented.
 
-## Design system and icons
-CSS custom properties are the source of truth for colour, spacing, typography, radii, controls and motion. Repeated components share rules and documented variants. Use the central custom SVG icon family defined in ICON_SYSTEM.md. Remove or isolate legacy styles instead of allowing two competing systems to style the same component. No emoji or arbitrary Unicode fallback icons.
+Keep selected place, sheet visibility and map position/zoom as explicit UI state. Map movement should not change the primary destination. Dismissing a place sheet should preserve the map position and zoom.
 
-## Navigation contract
-Primary destinations have stable IDs and one navigation/state contract. Bottom navigation stays visible on all mobile screens, including Explore. Navigating away closes the place sheet without corrupting map state. Returning to Explore preserves map context where practical.
+## Real-world data
+Use stable identifiers for places and preserve available sources. Do not fabricate missing details. Mark estimates and uncertainty. Any live information, geographic accuracy or routing claim requires a real source and implementation.
 
-## Map contract
-Keep map-world transform separate from fixed controls and sheet state. Pointer Events plus a drag threshold distinguish movement from pin taps. Markers use stable place IDs; decorative scenery is not interactive. Selecting a marker opens the contextual sheet. Dismissal preserves pan, zoom and filters. Illustration coordinates do not support real distance, directions or geographic precision.
-
-## Error and empty states
-Handle no search results, missing details, empty Saved/Journal, unsupported share, invalid storage, offline shell and unavailable source links. Empty states need a concise explanation and one relevant next action. Do not add artificial spinners to synchronous local actions.
-
-## PWA and privacy
-Increment the service-worker cache version when shell assets change. Verify fresh and repeat loads to avoid stale HTML/CSS combinations. A cached shell does not make venue facts current. Browsing should not require an account. Keep local storage minimal and namespaced. Device-local saves do not sync or constitute a backup.
+## Responsive and accessible behaviour
+Support mobile browser and installed PWA use. Desktop remains accessible as a web entry point and should direct users to the phone experience. Test keyboard, touch, safe-area spacing, focus behaviour and reduced motion.
 
 ## Release discipline
-Run syntax, responsive, accessibility and browser interaction checks before merging. Confirm the exact deployed commit and environment before calling a URL current. A preview is not production, and a merged commit is not proof of deployment. Report deployment blockers honestly.
+Run syntax checks, asset checks, browser interaction checks, responsive tests and PWA install/offline tests before release. Verify the exact deployed commit and environment. A merged change or preview URL is not proof that production is updated.
