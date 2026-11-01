@@ -58,3 +58,47 @@ function renderLogDetail(){const v=state.visited.find(x=>x.id===state.logTarget)
 function buildPlanCandidates(){const mood=state.mood||'all',area=$('#plan-area').value,time=$('#plan-time').value,budget=$('#plan-budget').value,interests=$$('.interest-picks input:checked').map(x=>x.value);const moodTags={slow:['slow'],curious:['curious','culture'],playful:['food','outside'],social:['food','music','culture'],outside:['outside'],creative:['culture','art']};let matches=plans.filter(p=>mood==='all'||(moodTags[mood]||[]).some(t=>p.stops.some(s=>{const v=placeBy(s.id);return v&&v.tags.includes(t)})));if(interests.length)matches=matches.filter(p=>p.stops.some(s=>{const v=placeBy(s.id);return v&&interests.some(t=>v.tags.includes(t)||(t==='art'&&/art|gallery|culture|museum/i.test(v.type+' '+v.desc)))}));if(area!=='any')matches=matches.filter(p=>p.stops.some(s=>{const v=placeBy(s.id);return v&&v.area.toLowerCase().includes(area.toLowerCase())}));if(time==='A few hours')matches=matches.filter(p=>p.time==='A few hours'||p.time==='2–3 hours');if(time==='All day')matches=matches.concat(plans.filter(p=>p.time==='Half a day'));const unique=[...new Map(matches.map(p=>[p.id,p])).values()];if(!unique.length){const tags=[...(moodTags[mood]||[]),...interests];let available=places.filter(p=>(area==='any'||p.area.toLowerCase().includes(area.toLowerCase()))&&(!tags.length||tags.some(t=>p.tags.includes(t)||(t==='art'&&/art|gallery|culture|museum/i.test(p.type+' '+p.desc)))));if(!available.length)available=places.filter(p=>area==='any'||p.area.toLowerCase().includes(area.toLowerCase()));const count=time==='All day'?4:time==='Half a day'?3:2;const generated={id:'custom-'+Date.now(),name:mood==='all'?'A little Lagos wander':moodLabel(mood),mood:moodLabel(mood),time:time==='any'?'A few hours':time,area:area==='any'?'Across Lagos':area,budget:budget==='any'?'Flexible':budget==='light'?'Keep it light':budget==='mid'?'A little room':'No set budget',interests,intro:'A starting point for '+moodLabel(mood).toLowerCase()+'. Places are matched to your choices. Check details with each venue before heading out.',preferences:{mood,area,time,budget,interests},stops:available.slice(0,count).map(p=>({id:p.id,title:p.name,note:p.type}))};if(generated.stops.length){customPlans.unshift(generated);write('customPlans',customPlans);unique.push(generated)}}state.planCandidates=unique;state.planPreferences={mood,area,time,budget,interests}}
 function beginPlan(){state.done=[];go('active-plan')}
 function finishPlan(){const last=state.planStops[state.planStops.length-1];if(last){state.noteTarget=last.id;const v=state.visited.find(x=>x.id===last.id);$('#visit-note').value=v?.note||'';modal('note-modal')}else go('been')}
+
+document.addEventListener('click',e=>{
+ const mood=e.target.closest('[data-mood]');if(mood){e.preventDefault();startPlan(mood.dataset.mood);return}
+ const nav=e.target.closest('[data-go]');if(nav){go(nav.dataset.go);return}
+ const place=e.target.closest('[data-place]');if(place){openPlace(place.dataset.place);return}
+ const pin=e.target.closest('[data-map-place]');if(pin){mapPlace(pin.dataset.mapPlace);return}
+ const savePlace=e.target.closest('[data-save-place]');if(savePlace){e.stopPropagation();save(savePlace.dataset.savePlace,'place');return}
+ const plan=e.target.closest('[data-plan]');if(plan){openPlan(plan.dataset.plan);return}
+ const tab=e.target.closest('[data-library-tab]');if(tab){state.libraryTab=tab.dataset.libraryTab;$$('[data-library-tab]').forEach(x=>x.classList.toggle('active',x===tab));renderLibrary();return}
+ if(e.target.closest('#map-sheet-close')){$('#map-sheet').hidden=true;return}
+ if(e.target.closest('#map-list-toggle')){$('#map-list-panel').hidden=false;return}
+ if(e.target.closest('#map-list-close')){$('#map-list-panel').hidden=true;return}
+ if(e.target.closest('#map-sheet-open')){if(state.currentPlace)openPlace(state.currentPlace);return}
+ if(e.target.closest('#map-sheet-save')){if(state.currentPlace)save(state.currentPlace,'place');return}
+ if(e.target.closest('#map-sheet-visited')){if(state.currentPlace)visit(state.currentPlace);return}
+ if(e.target.closest('#sheet-detail-save')){if(state.currentPlace){save(state.currentPlace,'place');$('#sheet-detail-save').textContent=isSaved(state.currentPlace,'place')?'Saved':'Save place'}return}
+ if(e.target.closest('#sheet-detail-visited')){if(state.currentPlace)visit(state.currentPlace);return}
+ if(e.target.closest('#sheet-detail-map')){const id=state.currentPlace;closeModal('place-modal');go('explore');if(id)mapPlace(id);return}
+ if(e.target.closest('#share-plan')||e.target.closest('#plan-share-top')){if(state.currentPlan)shareItem('plan',state.currentPlan);return}
+ if(e.target.closest('#profile-edit-name')){modal('name-modal');return}
+ const log=e.target.closest('[data-log-open]');if(log){state.logTarget=log.dataset.logOpen;go('log-detail');return}
+ if(e.target.closest('#log-note-action')){const v=state.visited.find(x=>x.id===state.logTarget);state.noteTarget=state.logTarget;$('#visit-note').value=v?.note||'';modal('note-modal');return}
+ if(e.target.closest('#save-visit-note')){const v=state.visited.find(x=>x.id===state.noteTarget);if(v){const old=v.note;v.note=$('#visit-note').value.trim();if(write('visited',state.visited)){renderBeen();renderLogDetail();closeModal('note-modal');toast('Your note is saved on this device.')}else v.note=old}return}
+ if(e.target.closest('#save-name')){const v=$('#name-input').value.trim();if(v){state.name=v;if(write('name',v)){renderProfile();renderHome();closeModal('name-modal')}}return}
+ if(e.target.closest('#avatar-change')||e.target.closest('#profile-avatar')){$('#avatar-file').click();return}
+ if(e.target.closest('#custom-plan-start')){buildPlanCandidates();closeModal('planner-modal');go('plan-options');renderPlanOptions();return}
+ if(e.target.closest('#plan-surprise')){buildPlanCandidates();if(state.planCandidates.length)state.planCandidates=[state.planCandidates[Math.floor(Math.random()*state.planCandidates.length)]];closeModal('planner-modal');go('plan-options');return}
+ if(e.target.closest('#start-plan')){startPlan();return}
+ if(e.target.closest('#another-surprise')){renderSurprise();return}
+ if(e.target.closest('#surprise-plan')){state.mood='curious';startPlan('curious');return}
+ if(e.target.closest('#start-this-plan')){beginPlan();return}
+ if(e.target.closest('#shared-start')){if(state.sharedPlan){const id='shared-'+Date.now();state.sharedPlan.id=id;customPlans.unshift(state.sharedPlan);if(!write('customPlans',customPlans))return;state.currentPlan=id;state.planStops=state.sharedPlan.stops.map(x=>({...x}));state.done=[];state.sharedMode=true;$('#shared-start').hidden=true;go('active-plan')}return}
+ if(e.target.closest('#finish-how')){finishPlan();return}
+ const activeDone=e.target.closest('[data-active-done]');if(activeDone){const id=activeDone.dataset.activeDone;if(!state.done.includes(id)&&visit(id)){state.done.push(id);renderActivePlan();if(state.done.length===state.planStops.length){$('#active-plan-finish').hidden=false;$('#active-plan-finish h2').textContent='You made a day of it. How was it?'}}return}
+ if(e.target.closest('#map-zoom-in')||e.target.closest('#map-zoom-out')){state.mapZoom=Math.max(.8,Math.min(2.1,state.mapZoom+(e.target.closest('#map-zoom-in')?.15:-.15)));$('#map-world').style.transform='translate(calc(-50% + '+state.mapX+'px),calc(-50% + '+state.mapY+'px)) scale('+state.mapZoom+')';return}
+ const close=e.target.closest('[data-close-modal]');if(close){closeModal(close.dataset.closeModal);return}
+ const filter=e.target.closest('[data-map-filter]');if(filter){state.mapFilter=filter.dataset.mapFilter;renderMarkers();$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x===filter));return}
+ const remove=e.target.closest('[data-remove]');if(remove){state.planStops=state.planStops.filter(x=>x.id!==remove.dataset.remove);renderPlan();return}
+ const swap=e.target.closest('[data-swap]');if(swap){state.replaceStop=Number(swap.dataset.swap);const excluded=state.planStops.map(x=>x.id);const available=places.filter(p=>!excluded.includes(p.id));$('#stop-options').innerHTML='<input id="stop-search-input" placeholder="Search this Lagos collection" aria-label="Search places to swap in">'+available.map(p=>'<button class="list-row" data-replace-stop="'+p.id+'"><span class="list-art">'+art(p.tone,p.tags[0])+'</span><span><strong>'+p.name+'</strong><small>'+p.area+' · '+p.type+'</small></span></button>').join('');modal('stop-modal');return}
+ const replacement=e.target.closest('[data-replace-stop]');if(replacement){const p=placeBy(replacement.dataset.replaceStop);if(p){state.planStops[state.replaceStop]={id:p.id,title:p.name,note:p.type};renderPlan();closeModal('stop-modal')}return}
+ const add=e.target.closest('[data-add-stop]');if(add){const p=placeBy(add.dataset.addStop);if(p){state.planStops.push({id:p.id,title:p.name,note:p.type});renderPlan();closeModal('stop-modal')}return}
+ if(e.target.closest('#add-stop')){const available=places.filter(p=>!state.planStops.some(s=>s.id===p.id));$('#stop-options').innerHTML='<input id="stop-search-input" placeholder="Search this Lagos collection" aria-label="Search places to add">'+available.map(p=>'<button class="list-row" data-add-stop="'+p.id+'"><span class="list-art">'+art(p.tone,p.tags[0])+'</span><span><strong>'+p.name+'</strong><small>'+p.area+' · '+p.type+'</small></span></button>').join('');modal('stop-modal');return}
+ if(e.target.closest('#clear-search')){$('#search-page-input').value='';renderSearchPage('');return}
+});
