@@ -1,4 +1,4 @@
-const CACHE = "outsideish-v9";
+const CACHE = "outsideish-v10";
 const CORE = ["/","/index.html","/clean-redesign.css","/clean-redesign.js","/manifest.webmanifest","/assets/mark.svg","/assets/lagos-street-illustration.svg"];
 self.addEventListener("install",event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)))});
 self.addEventListener("activate",event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith("outsideish-")&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim()))});
