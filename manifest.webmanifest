@@ -6,7 +6,8 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",\n  "categories": ["travel", "lifestyle"],
+  "orientation": "portrait-primary",
+  "categories": ["travel", "lifestyle"],
   "background_color": "#fbfaf6",
   "theme_color": "#fbfaf6",
   "icons": [
