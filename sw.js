@@ -1,5 +1,5 @@
 const CACHE = "outsideish-clean-shell-v7";
-const CORE = ["/","/index.html","/clean-redesign.css","/clean-redesign.js","/manifest.webmanifest","/assets/mark.svg"];
+const CORE = ["/","/index.html","/clean-redesign.css","/clean-redesign.js","/manifest.webmanifest","/assets/mark.svg","/assets/lagos-street-illustration.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
 });
