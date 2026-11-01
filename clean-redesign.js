@@ -144,3 +144,22 @@ else if(params.get('place')&&placeBy(params.get('place'))){$('#onboarding').hidd
 let drag=null;const canvas=$('.map-canvas');canvas.addEventListener('pointerdown',e=>{if(e.target.closest('.map-marker')||e.target.closest('.map-head')||e.target.closest('.map-sheet')||e.target.closest('.map-zoom'))return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,dx:state.mapX,dy:state.mapY};canvas.setPointerCapture(e.pointerId)});
 canvas.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;state.mapX=drag.dx+e.clientX-drag.x;state.mapY=drag.dy+e.clientY-drag.y;$('#map-world').style.transform='translate(calc(-50% + '+state.mapX+'px),calc(-50% + '+state.mapY+'px)) scale('+state.mapZoom+')'});
 const endDrag=e=>{if(drag&&e.pointerId===drag.id)drag=null};canvas.addEventListener('pointerup',endDrag);canvas.addEventListener('pointercancel',endDrag);
+
+$('#home-search').addEventListener('submit',e=>{e.preventDefault();go('search');renderSearchPage($('#home-search-input').value)});
+$('#search-page-form').addEventListener('submit',e=>{e.preventDefault();renderSearchPage($('#search-page-input').value)});
+$('#search-page-input').addEventListener('input',e=>renderSearchPage(e.target.value));
+$('#map-search').addEventListener('submit',e=>{e.preventDefault();state.mapQuery=$('#map-search-input').value.trim();renderMarkers();const hits=places.filter(p=>(p.name+' '+p.area+' '+p.type+' '+p.desc).toLowerCase().includes(state.mapQuery.toLowerCase()));if(hits.length===1)mapPlace(hits[0].id);else if(!hits.length)toast('No matches on the map. Try another search.')});
+$('#map-search-input').addEventListener('input',e=>{state.mapQuery=e.target.value;renderMarkers()});
+$('#map-filter').addEventListener('click',()=>modal('filter-modal'));
+$('#save-plan').addEventListener('click',()=>{if(state.currentPlan&&persistPlanDraft())save(state.currentPlan,'plan')});
+$('#onboard-next').addEventListener('click',()=>{state.onboardStep=1;renderOnboard()});
+$('#onboard-skip').addEventListener('click',()=>{state.onboarded=true;if(write('onboarded',true)){$('#onboarding').hidden=true;renderHome()}});
+$('#onboard-finish').addEventListener('click',()=>{state.onboarded=true;if(write('onboarded',true)){$('#onboarding').hidden=true;renderHome();if(!state.name)modal('name-modal')}});
+$('#avatar-file').addEventListener('change',e=>{const file=e.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{const previous=state.avatar;state.avatar=reader.result;if(write('avatar',state.avatar)){renderProfile();renderHome()}else state.avatar=previous};reader.readAsDataURL(file)});
+$('#plan-show-map').addEventListener('click',()=>{const ids=state.planStops.map(s=>s.id);state.mapPlanIds=ids;state.mapFilter='all';state.mapQuery='';go('explore');renderMarkers();const first=ids.find(id=>places.some(p=>p.id===id));if(first)mapPlace(first)});
+$('#note-modal').addEventListener('click',e=>{if(e.target.id==='note-modal')closeModal('note-modal')});
+$('#place-modal').addEventListener('click',e=>{if(e.target.id==='place-modal')closeModal('place-modal')});
+$('#planner-modal').addEventListener('click',e=>{if(e.target.id==='planner-modal')closeModal('planner-modal')});
+$('#stop-modal').addEventListener('click',e=>{if(e.target.id==='stop-modal')closeModal('stop-modal')});
+$('#stop-options').addEventListener('input',e=>{if(e.target.id==='stop-search-input'){const q=e.target.value.toLowerCase();$$('[data-add-stop],[data-replace-stop]').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q));const custom=$('#add-custom-stop')||$('#add-custom-swap');if(custom){custom.hidden=!q.trim();custom.textContent='Add "'+e.target.value.trim()+'" as a custom stop'}}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal-backdrop').forEach(m=>{if(!m.hidden)closeModal(m.id)});$('#map-sheet').hidden=true}});
