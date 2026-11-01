@@ -102,3 +102,21 @@ document.addEventListener('click',e=>{
  if(e.target.closest('#add-stop')){const available=places.filter(p=>!state.planStops.some(s=>s.id===p.id));$('#stop-options').innerHTML='<input id="stop-search-input" placeholder="Search this Lagos collection" aria-label="Search places to add">'+available.map(p=>'<button class="list-row" data-add-stop="'+p.id+'"><span class="list-art">'+art(p.tone,p.tags[0])+'</span><span><strong>'+p.name+'</strong><small>'+p.area+' · '+p.type+'</small></span></button>').join('');modal('stop-modal');return}
  if(e.target.closest('#clear-search')){$('#search-page-input').value='';renderSearchPage('');return}
 });
+
+let deferredInstallPrompt=null,waitingWorker=null;
+function syncNetworkStatus(){const el=$('#network-status');el.hidden=navigator.onLine;document.body.classList.toggle('is-offline',!navigator.onLine)}
+window.addEventListener('online',syncNetworkStatus);window.addEventListener('offline',syncNetworkStatus);syncNetworkStatus();
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;$('#install-app').hidden=false});
+$('#install-app').addEventListener('click',async()=>{if(!deferredInstallPrompt){toast('Use your browser menu to add Outsideish to your home screen.');return}deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;$('#install-app').hidden=true});
+window.addEventListener('appinstalled',()=>{toast('Outsideish has been added to your home screen.');$('#install-app').hidden=true});
+if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js').then(reg=>{if(reg.waiting){waitingWorker=reg.waiting;$('#update-status').hidden=false}reg.addEventListener('updatefound',()=>{const worker=reg.installing;if(!worker)return;worker.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller){waitingWorker=worker;$('#update-status').hidden=false}})});navigator.serviceWorker.addEventListener('controllerchange',()=>location.reload())}).catch(()=>toast('App updates could not be checked.'))}
+$('#apply-update').addEventListener('click',()=>{if(waitingWorker)waitingWorker.postMessage('SKIP_WAITING')});
+$('#home-search-input').addEventListener('focus',()=>{});$('#map-search-input').addEventListener('input',e=>{state.mapQuery=e.target.value;renderMarkers()});
+$('#map-search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const first=places.find(p=>(p.name+' '+p.area+' '+p.type).toLowerCase().includes(e.target.value.toLowerCase()));if(first)mapPlace(first.id)}});
+$('#plan-show-map').addEventListener('click',()=>{const ids=state.planStops.map(s=>s.id);go('explore');state.mapFilter='all';state.mapQuery='';renderMarkers();if(ids.length)mapPlace(ids[0])});
+$('#note-modal').addEventListener('click',e=>{if(e.target.id==='note-modal')closeModal('note-modal')});
+$('#place-modal').addEventListener('click',e=>{if(e.target.id==='place-modal')closeModal('place-modal')});
+$('#planner-modal').addEventListener('click',e=>{if(e.target.id==='planner-modal')closeModal('planner-modal')});
+$('#stop-modal').addEventListener('click',e=>{if(e.target.id==='stop-modal')closeModal('stop-modal')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){$$('.modal-backdrop').forEach(m=>m.hidden=true);$('#map-sheet').hidden=true}});
+$('#stop-options').addEventListener('input',e=>{if(e.target.id==='stop-search-input'){const q=e.target.value.toLowerCase();$$('[data-add-stop],[data-replace-stop]').forEach(b=>b.hidden=!b.textContent.toLowerCase().includes(q))}});
